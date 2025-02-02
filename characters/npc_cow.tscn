@@ -1,0 +1,138 @@
+[gd_scene load_steps=17 format=3 uid="uid://bjpxedqt24ehp"]
+
+[ext_resource type="Texture2D" uid="uid://q35owo3sw1gi" path="res://art/sprout lands basic/Characters/Free Cow Sprites.png" id="1_b5glw"]
+[ext_resource type="Script" path="res://characters/npc_cow.gd" id="1_rigvh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyjf"]
+size = Vector2(22, 6)
+
+[sub_resource type="Animation" id="Animation_v4bha"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 2]
+}
+
+[sub_resource type="Animation" id="Animation_qo2la"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_qll3m"]
+resource_name = "sleep"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_hkvot"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nmcrp"]
+_data = {
+"RESET": SubResource("Animation_qo2la"),
+"idle": SubResource("Animation_v4bha"),
+"sleep": SubResource("Animation_qll3m"),
+"walk": SubResource("Animation_hkvot")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3b6yn"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_miuwl"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_3b6yn")
+blend_point_0/pos = 0.0
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ckc8e"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_uqjcu"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_ckc8e")
+blend_point_0/pos = 0.0
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j7iyq"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ud4wb"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4264b"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_axu6e"]
+states/Idle/node = SubResource("AnimationNodeBlendSpace1D_miuwl")
+states/Idle/position = Vector2(392, 93)
+states/Walk/node = SubResource("AnimationNodeBlendSpace1D_uqjcu")
+states/Walk/position = Vector2(560, 75)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_j7iyq"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_ud4wb"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_4264b")]
+
+[node name="npc_cow" type="CharacterBody2D"]
+script = ExtResource("1_rigvh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_b5glw")
+hframes = 3
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 10)
+shape = SubResource("RectangleShape2D_4gyjf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nmcrp")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_axu6e")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Idle/blend_position = -0.00162601
+parameters/Walk/blend_position = 0
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
