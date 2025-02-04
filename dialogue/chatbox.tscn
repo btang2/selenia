@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddwh64sobwtg8"]
+
+[ext_resource type="Texture2D" uid="uid://dlduc5l4cuawj" path="res://art/misc personal assets/text_bubble.png" id="1_04kq7"]
+[ext_resource type="Script" path="res://scripts/chatbox.gd" id="1_dlbxi"]
+
+[node name="Chatbox" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_dlbxi")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -40.0
+offset_right = 73.0
+offset_bottom = 1.0
+texture = ExtResource("1_04kq7")
+
+[node name="TargetItem" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 9.0
+offset_right = 145.0
+offset_bottom = 34.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "find \"item\""
