@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://buk7rdejqim70"]
+[gd_scene load_steps=18 format=4 uid="uid://buk7rdejqim70"]
 
 [ext_resource type="Texture2D" uid="uid://c6ccarsxrdd08" path="res://art/sprout lands basic/Tilesets/Hills.png" id="1_42omr"]
 [ext_resource type="Texture2D" uid="uid://b1umu26cfkumh" path="res://art/sprout lands basic/Tilesets/Grass.png" id="1_truym"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b0g0v3euet1e7" path="res://art/sprout lands basic/Tilesets/Wooden_House_Walls_Tilset.png" id="4_rf77h"]
 [ext_resource type="Texture2D" uid="uid://csq8qfhtwpx8v" path="res://art/sprout lands basic/Tilesets/Wooden_House_Roof_Tilset.png" id="5_qtlkb"]
 [ext_resource type="PackedScene" uid="uid://bplm18s7yigfp" path="res://objects/chest.tscn" id="6_p1inh"]
+[ext_resource type="PackedScene" uid="uid://c2hj0031mk6v0" path="res://objects/apple.tscn" id="9_qygqu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6kewp"]
 texture = ExtResource("1_truym")
@@ -303,3 +304,21 @@ position = Vector2(-31, 177)
 
 [node name="Chest" parent="." instance=ExtResource("6_p1inh")]
 position = Vector2(120, 81)
+
+[node name="apple" parent="." instance=ExtResource("9_qygqu")]
+position = Vector2(314, 141)
+
+[node name="apple2" parent="." instance=ExtResource("9_qygqu")]
+position = Vector2(30, 64)
+
+[node name="apple3" parent="." instance=ExtResource("9_qygqu")]
+position = Vector2(97, 180)
+
+[node name="apple4" parent="." instance=ExtResource("9_qygqu")]
+position = Vector2(353, 162)
+
+[node name="apple5" parent="." instance=ExtResource("9_qygqu")]
+position = Vector2(381, 14)
+
+[node name="apple6" parent="." instance=ExtResource("9_qygqu")]
+position = Vector2(241, 31)

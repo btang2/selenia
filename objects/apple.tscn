@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2hj0031mk6v0"]
+
+[ext_resource type="Texture2D" uid="uid://c1vpa6p1fmtfc" path="res://art/sprout lands basic/apple-icon.png" id="1_cbsbg"]
+[ext_resource type="Script" path="res://objects/apple.gd" id="1_nrsyk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ds6e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cbsbg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5vg0y"]
+radius = 7.0
+
+[node name="apple" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_nrsyk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.90735e-06, -1)
+scale = Vector2(1.36914, 1.27344)
+sprite_frames = SubResource("SpriteFrames_2ds6e")
+autoplay = "default"
+frame_progress = 0.82288
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.13687e-13, 0)
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_5vg0y")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

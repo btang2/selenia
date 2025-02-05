@@ -6,6 +6,8 @@ extends CharacterBody2D
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
 
+var has_apple = false
+
 func _ready():
 	update_animation_parameters(starting_direction)
 
@@ -34,3 +36,6 @@ func pick_new_state():
 		state_machine.travel("Walk")
 	else:
 		state_machine.travel("Idle")
+		
+func player():
+	pass
