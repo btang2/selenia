@@ -322,3 +322,5 @@ position = Vector2(381, 14)
 
 [node name="apple6" parent="." instance=ExtResource("9_qygqu")]
 position = Vector2(241, 31)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

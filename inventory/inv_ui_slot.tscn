@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtrd6mwh73kcg"]
+
+[ext_resource type="Texture2D" uid="uid://lqyu2x42a7f2" path="res://art/sprout lands basic/Objects/Egg_item.png" id="1_1xew8"]
+[ext_resource type="Script" path="res://inventory/inv_ui_slot.gd" id="1_esx3v"]
+
+[node name="inv_UI_slot" type="Panel"]
+custom_minimum_size = Vector2(20, 20)
+offset_right = 20.0
+offset_bottom = 20.0
+script = ExtResource("1_esx3v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(10, 10)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("1_1xew8")
+
+[node name="item_display" type="Sprite2D" parent="."]
+position = Vector2(10, 10)
+scale = Vector2(1.25, 1.25)
