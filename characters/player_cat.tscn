@@ -236,6 +236,7 @@ inv = ExtResource("2_vydkp")
 texture = ExtResource("1_acm82")
 hframes = 4
 vframes = 4
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)

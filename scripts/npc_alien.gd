@@ -59,6 +59,10 @@ func _on_chat_detection_body_exited(body: Node2D) -> void:
 	if (body.name.match("PlayerCat")):
 		player = body
 		player_in_chat_zone = false
+		if (is_chatting):
+			is_chatting = false
+			$Chatbox.cancel_dialogue()
+			current_dialogue_id = $Chatbox.current_dialogue_id 
 		#print("player exited chat zone")
 
 

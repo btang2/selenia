@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="game-test"
-run/main_scene="res://scenes/worldmap.tscn"
+run/main_scene="res://scenes/spawn_island.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://Global.gd"
+Playerloader="*res://playerloader.gd"
 
 [display]
 
