@@ -10,6 +10,7 @@ enum COW_STATE {IDLE, WALK}
 @onready var state_machine = animation_tree.get("parameters/playback")
 @onready var sprite = $Sprite2D
 @onready var timer = $Timer
+@onready var c_key = $c_key
 
 var current_dialogue_id = -1
 
@@ -31,12 +32,14 @@ func _process(_delta) -> void:
 	if (player_in_chat_zone && Input.is_action_just_pressed("chat")): #currently "c"
 		if (!is_chatting):
 			print("chatting w/ alien")
+			c_key.visible = false
 			$Chatbox.start(current_dialogue_id)
 			current_dialogue_id = $Chatbox.current_dialogue_id 
 			is_chatting = true
 		else:
 			print("stopped chatting w/ alien")
 			#current_dialogue_id = $Chatbox.current_dialogue_id - 1
+			c_key.visible = true
 			$Chatbox.cancel_dialogue()
 			current_dialogue_id = $Chatbox.current_dialogue_id 
 			is_chatting = false
@@ -52,6 +55,7 @@ func _on_chat_detection_body_entered(body: Node2D) -> void:
 	if (body.name.match("PlayerCat")):
 		player = body
 		player_in_chat_zone = true
+		c_key.visible = true
 		#print("player entered chat zone")
 
 
@@ -59,6 +63,7 @@ func _on_chat_detection_body_exited(body: Node2D) -> void:
 	if (body.name.match("PlayerCat")):
 		player = body
 		player_in_chat_zone = false
+		c_key.visible = false
 		if (is_chatting):
 			is_chatting = false
 			$Chatbox.cancel_dialogue()
