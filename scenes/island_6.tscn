@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://sq4uqq0y611f"]
+[gd_scene load_steps=14 format=4 uid="uid://b7vsdu2uadk81"]
 
 [ext_resource type="Script" path="res://scripts/island_1.gd" id="1_cqk11"]
 [ext_resource type="Texture2D" uid="uid://b1umu26cfkumh" path="res://art/sprout lands basic/Tilesets/Grass.png" id="2_r2o4a"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://byq0xit7aweec" path="res://art/sprout lands basic/Tilesets/Fences.png" id="4_yaphl"]
 [ext_resource type="PackedScene" uid="uid://cn7tikxa3bwrt" path="res://characters/player_cat.tscn" id="5_i5l0o"]
 [ext_resource type="PackedScene" uid="uid://oynayhy2qfbs" path="res://scenes/portal.tscn" id="6_udbn2"]
+[ext_resource type="Texture2D" uid="uid://qfv63x0db5en" path="res://art/misc personal assets/signs/sign-7.png" id="7_ukvdk"]
+[ext_resource type="Texture2D" uid="uid://bq15a8wu6vi5e" path="res://art/misc personal assets/signs/sign-2.png" id="8_4lqed"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trxnx"]
 texture = ExtResource("2_r2o4a")
@@ -249,3 +251,13 @@ from = "island_6"
 
 [node name="from_island_7" type="Marker2D" parent="."]
 position = Vector2(218, -41)
+
+[node name="Sign-7" type="Sprite2D" parent="."]
+position = Vector2(219, -60)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("7_ukvdk")
+
+[node name="Sign-2" type="Sprite2D" parent="."]
+position = Vector2(204, 285)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("8_4lqed")
