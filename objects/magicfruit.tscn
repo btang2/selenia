@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://1tvis1kmyifw"]
+
+[ext_resource type="Script" path="res://objects/magicfruit.gd" id="1_76g40"]
+[ext_resource type="Texture2D" uid="uid://blnt028txtvem" path="res://art/item art/fruits.png" id="1_qr437"]
+[ext_resource type="Texture2D" uid="uid://c5102tegcwsl4" path="res://art/keybord and controller icons/individual sprites/keyboard/F.png" id="2_xeew2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psrfy"]
+atlas = ExtResource("1_qr437")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3lasn"]
+radius = 15.0
+
+[node name="magicfruit" type="Area2D"]
+script = ExtResource("1_76g40")
+
+[node name="fruit" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_psrfy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3lasn")
+
+[node name="f" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -18)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_xeew2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

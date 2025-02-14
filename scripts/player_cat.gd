@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var move_speed : float = 300 #100, is 300 for debugging purposes
+@export var move_speed : float = 150 #100, is 300 for debugging purposes
 @export var starting_direction : Vector2 = Vector2(0, 1)
 
 @export var inv: Inv

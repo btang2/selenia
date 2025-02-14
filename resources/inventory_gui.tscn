@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://bepqvcbkowoej"]
+
+[ext_resource type="Script" path="res://resources/inventory_gui.gd" id="1_07ih8"]
+
+[node name="inventory_gui" type="CanvasLayer"]
+script = ExtResource("1_07ih8")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_left = 136.0
+offset_top = 224.0
+offset_right = 400.0
+offset_bottom = 256.0
+
+[node name="Inv" type="GridContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+columns = 8
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+self_modulate = Color(0.903545, 0.848161, 0.9879, 0.588235)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://buk7rdejqim70"]
+[gd_scene load_steps=26 format=4 uid="uid://buk7rdejqim70"]
 
 [ext_resource type="Script" path="res://scripts/spawn_island.gd" id="1_ij2p2"]
 [ext_resource type="Texture2D" uid="uid://b1umu26cfkumh" path="res://art/sprout lands basic/Tilesets/Grass.png" id="1_qgyj2"]
@@ -8,10 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://csq8qfhtwpx8v" path="res://art/sprout lands basic/Tilesets/Wooden_House_Roof_Tilset.png" id="5_4klgn"]
 [ext_resource type="PackedScene" uid="uid://cn7tikxa3bwrt" path="res://characters/player_cat.tscn" id="6_x8fc8"]
 [ext_resource type="PackedScene" uid="uid://bjpxedqt24ehp" path="res://characters/npc_alien.tscn" id="7_mpxw5"]
-[ext_resource type="PackedScene" uid="uid://bplm18s7yigfp" path="res://objects/chest.tscn" id="8_g1qha"]
 [ext_resource type="PackedScene" uid="uid://c2hj0031mk6v0" path="res://objects/apple.tscn" id="9_a2apk"]
 [ext_resource type="PackedScene" uid="uid://oynayhy2qfbs" path="res://scenes/portal.tscn" id="10_i8adv"]
+[ext_resource type="Texture2D" uid="uid://dap11jsedygbh" path="res://art/keybord and controller icons/individual sprites/keyboard/W.png" id="12_kvgbd"]
 [ext_resource type="Texture2D" uid="uid://bidsdpvwxvm5s" path="res://art/misc personal assets/signs/sign-1.png" id="12_se3xd"]
+[ext_resource type="Texture2D" uid="uid://ds056qotbo40p" path="res://art/keybord and controller icons/individual sprites/keyboard/A.png" id="13_rj5l3"]
+[ext_resource type="Texture2D" uid="uid://dj74ow0nkse81" path="res://art/keybord and controller icons/individual sprites/keyboard/D button.png" id="14_igioi"]
+[ext_resource type="Texture2D" uid="uid://bn8bicmyx8tih" path="res://art/keybord and controller icons/individual sprites/keyboard/S.png" id="15_8eon7"]
+[ext_resource type="PackedScene" uid="uid://bepqvcbkowoej" path="res://resources/inventory_gui.tscn" id="16_bcwxw"]
+[ext_resource type="PackedScene" uid="uid://1tvis1kmyifw" path="res://objects/magicfruit.tscn" id="17_6vvmj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o1ga7"]
 texture = ExtResource("1_qgyj2")
@@ -277,6 +282,7 @@ sources/3 = SubResource("TileSetAtlasSource_pq3i6")
 [node name="spawn_island" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_ij2p2")
+metadata/_edit_lock_ = true
 
 [node name="base_ground" type="TileMapLayer" parent="."]
 z_index = -5
@@ -296,19 +302,19 @@ tile_set = SubResource("TileSet_5fdmb")
 metadata/_edit_lock_ = true
 
 [node name="PlayerCat" parent="." instance=ExtResource("6_x8fc8")]
-position = Vector2(149, 47)
+position = Vector2(120, 77)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="PlayerCat"]
 remote_path = NodePath("../../Camera2D")
 
+[node name="move_instruction" type="RemoteTransform2D" parent="PlayerCat"]
+remote_path = NodePath("../../move_instruction")
+
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(149, 47)
+position = Vector2(120, 77)
 
 [node name="npc_cow" parent="." instance=ExtResource("7_mpxw5")]
 position = Vector2(-31, 177)
-
-[node name="Chest" parent="." instance=ExtResource("8_g1qha")]
-position = Vector2(120, 81)
 
 [node name="apple" parent="." instance=ExtResource("9_a2apk")]
 position = Vector2(314, 141)
@@ -329,6 +335,7 @@ position = Vector2(381, 14)
 position = Vector2(241, 31)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="to_island_1" parent="." instance=ExtResource("10_i8adv")]
 position = Vector2(517, 87)
@@ -341,3 +348,42 @@ position = Vector2(517, 136)
 position = Vector2(517, 110)
 scale = Vector2(0.02, 0.02)
 texture = ExtResource("12_se3xd")
+
+[node name="move_instruction" type="CanvasGroup" parent="."]
+visible = false
+position = Vector2(120, 77)
+
+[node name="W" type="Sprite2D" parent="move_instruction"]
+position = Vector2(0, -32)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("12_kvgbd")
+
+[node name="A" type="Sprite2D" parent="move_instruction"]
+position = Vector2(-15, -17)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("13_rj5l3")
+
+[node name="D" type="Sprite2D" parent="move_instruction"]
+position = Vector2(15, -17)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("14_igioi")
+
+[node name="S" type="Sprite2D" parent="move_instruction"]
+position = Vector2(0, -17)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("15_8eon7")
+
+[node name="move_instruction_timer" type="Timer" parent="."]
+
+[node name="inventory_gui" parent="." instance=ExtResource("16_bcwxw")]
+
+[node name="magicfruit-1" parent="." instance=ExtResource("17_6vvmj")]
+position = Vector2(165, 218)
+
+[node name="magicfruit-2" parent="." instance=ExtResource("17_6vvmj")]
+position = Vector2(50, 243)
+
+[node name="magicfruit-3" parent="." instance=ExtResource("17_6vvmj")]
+position = Vector2(262, 203)
+
+[connection signal="timeout" from="move_instruction_timer" to="." method="_on_move_instruction_timer_timeout"]

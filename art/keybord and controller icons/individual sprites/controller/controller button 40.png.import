@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://1x8lro0jichu"
+path="res://.godot/imported/controller button 40.png-5a893e9fc3e3e747f65d6c94304da69e.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://art/keybord and controller icons/individual sprites/controller/controller button 40.png"
+dest_files=["res://.godot/imported/controller button 40.png-5a893e9fc3e3e747f65d6c94304da69e.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1
