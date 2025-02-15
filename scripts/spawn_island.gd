@@ -6,7 +6,7 @@ func _ready() -> void:
 		$PlayerCat.position = get_node(str("./from_" + Global.from_id)).position
 	else:
 		$move_instruction.visible = true
-		$move_instruction_timer.start(3) #could be better instead to wait until player presses a key
+		$move_instruction_timer.start(2.5) #could be better instead to wait until player presses a key
 		#Global.player_inv = ["res://resources/magicfruit.tres", "", "", "", "", "", "", ""]
 		#Global.player_inv_count = [1, 0, 0, 0, 0, 0, 0, 0]
 		#$inventory_gui.update()

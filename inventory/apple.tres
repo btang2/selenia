@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://41ik5pf07yxe"]
-
-[ext_resource type="Script" path="res://scenes/inventory_item.gd" id="1_bqh1x"]
-[ext_resource type="Texture2D" uid="uid://c1vpa6p1fmtfc" path="res://art/sprout lands basic/apple-icon.png" id="2_s8o77"]
-
-[resource]
-script = ExtResource("1_bqh1x")
-name = "apple"
-texture = ExtResource("2_s8o77")

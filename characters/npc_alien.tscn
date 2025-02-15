@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://bjpxedqt24ehp"]
+[gd_scene load_steps=17 format=3 uid="uid://bjpxedqt24ehp"]
 
 [ext_resource type="Texture2D" uid="uid://q35owo3sw1gi" path="res://art/sprout lands basic/Characters/Free Cow Sprites.png" id="1_b5glw"]
 [ext_resource type="Script" path="res://scripts/npc_alien.gd" id="1_rigvh"]
 [ext_resource type="PackedScene" uid="uid://ddwh64sobwtg8" path="res://dialogue/chatbox.tscn" id="3_cmlje"]
-[ext_resource type="Texture2D" uid="uid://cxl7yniqsceiy" path="res://art/misc personal assets/c_button.png" id="4_okh8j"]
+[ext_resource type="Texture2D" uid="uid://b3x2113801wis" path="res://art/keybord and controller icons/individual sprites/keyboard/C button.png" id="4_avpxl"]
+[ext_resource type="Texture2D" uid="uid://cha0e8mdeni4a" path="res://art/keybord and controller icons/individual sprites/keyboard/= equal.png" id="5_lpbnq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aoa0w"]
 size = Vector2(20, 7)
@@ -136,10 +137,17 @@ shape = SubResource("CircleShape2D_t6ref")
 [node name="c_key" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(0, -14)
-scale = Vector2(0.01, 0.01)
-texture = ExtResource("4_okh8j")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_avpxl")
+
+[node name="equal_key" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(37, -45)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_lpbnq")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="chat_detection" to="." method="_on_chat_detection_body_entered"]
 [connection signal="body_exited" from="chat_detection" to="." method="_on_chat_detection_body_exited"]
 [connection signal="dialogue_finished" from="Chatbox" to="." method="_on_chatbox_dialogue_finished"]
+[connection signal="quest_completed" from="Chatbox" to="." method="_on_chatbox_quest_completed"]

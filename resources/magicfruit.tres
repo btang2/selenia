@@ -9,6 +9,6 @@ region = Rect2(16, 32, 16, 16)
 
 [resource]
 script = ExtResource("1_vxqc8")
-type = 0
+type = 1
 name = "magicfruit"
 texture = SubResource("AtlasTexture_rf3kr")

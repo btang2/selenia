@@ -11,8 +11,9 @@ enum COW_STATE {IDLE, WALK}
 @onready var sprite = $Sprite2D
 @onready var timer = $Timer
 @onready var c_key = $c_key
+@onready var equal_key = $equal_key
 
-var current_dialogue_id = -1
+var current_dialogue_id = 0 #-1 originally
 
 #don't need to do anything? this is going to be the alien
 
@@ -28,27 +29,51 @@ func _ready():
 	#pick_new_state()
 	
 func _process(_delta) -> void:
+	
 	#movement/switching state mechanic goes here
-	if (player_in_chat_zone && Input.is_action_just_pressed("chat")): #currently "c"
-		if (!is_chatting):
-			print("chatting w/ alien")
-			c_key.visible = false
-			$Chatbox.start(current_dialogue_id)
-			current_dialogue_id = $Chatbox.current_dialogue_id 
-			is_chatting = true
-		else:
-			print("stopped chatting w/ alien")
-			#current_dialogue_id = $Chatbox.current_dialogue_id - 1
-			c_key.visible = true
-			$Chatbox.cancel_dialogue()
-			current_dialogue_id = $Chatbox.current_dialogue_id 
-			is_chatting = false
+	if (player_in_chat_zone): 
+		var has_quest_items = check_quest(current_dialogue_id)
+		$Chatbox.player_has_required = has_quest_items
+		if (Input.is_action_just_pressed("chat")):
+			if (!is_chatting):
+				print("chatting w/ alien")
+				c_key.visible = false
+				equal_key.visible = has_quest_items
+				$Chatbox.start(current_dialogue_id)
+				current_dialogue_id = $Chatbox.current_dialogue_id 
+				is_chatting = true
+				print(current_dialogue_id) #check if 
+			else:
+				print("stopped chatting w/ alien")
+				#current_dialogue_id = $Chatbox.current_dialogue_id - 1
+				c_key.visible = true
+				equal_key.visible = false
+				$Chatbox.cancel_dialogue()
+				current_dialogue_id = $Chatbox.current_dialogue_id 
+				is_chatting = false
 	#elif (!player_in_chat_zone):
 	#	current_dialogue_id = $Chatbox.current_dialogue_id - 1
 	#	$Chatbox.cancel_dialogue()
 	#	is_chatting = false
 	#if (current_dialogue_id < -1):
 	#	current_dialogue_id = -1
+
+func check_quest(dialogue_id: int):
+	#hard coded
+	if (dialogue_id == 0):
+		return Global.search_inv("res://resources/magicfruit.tres", 3)
+		
+	return false
+
+func fulfill_quest(dialogue_id: int):
+	#also hard coded, 1-to-1 w/ above, assume materials
+	print("fulfilling quest: " + str(dialogue_id))
+	if (dialogue_id == 0):
+		Global.remove_inv("res://resources/magicfruit.tres", 3)
+		Global.add_inv("res://resources/portalkey.tres", 1)
+	
+#search_inv, remove_inv, add_inv all global functions now
+
 	
 func _on_chat_detection_body_entered(body: Node2D) -> void:
 	#print(body.name)
@@ -64,12 +89,23 @@ func _on_chat_detection_body_exited(body: Node2D) -> void:
 		player = body
 		player_in_chat_zone = false
 		c_key.visible = false
+		equal_key.visible = false
 		if (is_chatting):
 			is_chatting = false
 			$Chatbox.cancel_dialogue()
 			current_dialogue_id = $Chatbox.current_dialogue_id 
 		#print("player exited chat zone")
 
+func _on_chatbox_quest_completed() -> void:
+	#do everything needed on completed quest (update materials sfx, etc)
+	#update materials
+	print("completed quest")
+	fulfill_quest(current_dialogue_id)
+	
+	#any sorta effects
+	
+	#make trade not repeatable
+	equal_key.visible = false
 
 func _on_timer_timeout() -> void:
 	timer.wait_time = 1 #could be random, set later, state doesnt matter since idle atm
@@ -77,7 +113,8 @@ func _on_timer_timeout() -> void:
 func _on_chatbox_dialogue_finished() -> void:
 	current_dialogue_id = $Chatbox.current_dialogue_id 
 	is_chatting = false
-	
+
+
 
 """
 func _physics_process(_delta):

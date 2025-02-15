@@ -3,7 +3,6 @@ extends CharacterBody2D
 @export var move_speed : float = 150 #100, is 300 for debugging purposes
 @export var starting_direction : Vector2 = Vector2(0, 1)
 
-@export var inv: Inv
 
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")

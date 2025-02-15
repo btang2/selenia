@@ -1,9 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://cn7tikxa3bwrt"]
+[gd_scene load_steps=28 format=3 uid="uid://cn7tikxa3bwrt"]
 
 [ext_resource type="Texture2D" uid="uid://iw2766lshswg" path="res://art/sprout lands basic/Characters/Basic Charakter Spritesheet.png" id="1_acm82"]
 [ext_resource type="Script" path="res://scripts/player_cat.gd" id="1_x66dk"]
-[ext_resource type="Resource" uid="uid://brnilfj0ypae7" path="res://inventory/playerinv.tres" id="2_vydkp"]
-[ext_resource type="PackedScene" uid="uid://b0671o7o02ehv" path="res://inventory/inv_ui.tscn" id="4_hemof"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sk1oc"]
 size = Vector2(10, 6)
@@ -230,13 +228,11 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 [node name="PlayerCat" type="CharacterBody2D" groups=["PlayerCat"]]
 position = Vector2(-5, 0)
 script = ExtResource("1_x66dk")
-inv = ExtResource("2_vydkp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_acm82")
 hframes = 4
 vframes = 4
-frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
@@ -252,9 +248,3 @@ tree_root = SubResource("AnimationNodeStateMachine_380eo")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(-0.00174218, 1.05259)
 parameters/Walk/blend_position = Vector2(0, 0.948276)
-
-[node name="Inv_UI" parent="." instance=ExtResource("4_hemof")]
-offset_left = 13.0
-offset_top = -46.0
-offset_right = 97.0
-offset_bottom = 12.0

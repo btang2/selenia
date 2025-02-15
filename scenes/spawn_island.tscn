@@ -378,12 +378,12 @@ texture = ExtResource("15_8eon7")
 [node name="inventory_gui" parent="." instance=ExtResource("16_bcwxw")]
 
 [node name="magicfruit-1" parent="." instance=ExtResource("17_6vvmj")]
-position = Vector2(165, 218)
+position = Vector2(11, -85)
 
 [node name="magicfruit-2" parent="." instance=ExtResource("17_6vvmj")]
-position = Vector2(50, 243)
+position = Vector2(-138, 168)
 
 [node name="magicfruit-3" parent="." instance=ExtResource("17_6vvmj")]
-position = Vector2(262, 203)
+position = Vector2(450, -46)
 
 [connection signal="timeout" from="move_instruction_timer" to="." method="_on_move_instruction_timer_timeout"]
