@@ -4,21 +4,20 @@ signal dialogue_finished
 signal quest_completed
 
 var dialogue = []
-@export var current_dialogue_id = 0
 @export var player_has_required = false
 var d_active = false
 
 func _ready():
 	$NinePatchRect.visible = false
 	
-func start(cur_id):
+func start():
 	if (d_active):
 		return
 	d_active = true
 	$NinePatchRect.visible = true
 	dialogue = load_dialogue()
-	current_dialogue_id = cur_id
-	$NinePatchRect/TargetItem.text = "[center]" + dialogue[current_dialogue_id]["TargetItem"] + "[/center]"
+	#current_dialogue_id = cur_id
+	$NinePatchRect/TargetItem.text = "[center]" + dialogue[Global.quest_number]["TargetItem"] + "[/center]"
 	#next_script()
 	
 
@@ -32,8 +31,8 @@ func _input(event):
 		#change when actually implementing quests, secret button for now
 		#next_script()
 		emit_signal("quest_completed") #important to keep here for order
-		current_dialogue_id += 1
-		$NinePatchRect/TargetItem.text = "[center]" + dialogue[current_dialogue_id]["TargetItem"] + "[/center]"
+		Global.quest_number += 1
+		$NinePatchRect/TargetItem.text = "[center]" + dialogue[Global.quest_number]["TargetItem"] + "[/center]"
 		
 		d_active = false
 		$NinePatchRect.visible = false
@@ -49,11 +48,11 @@ func cancel_dialogue():
 #DO NOT USE (bugged)
 func next_script():
 	#TODO: add functionality where it only advances if you have the item (inventory type system?)
-	current_dialogue_id += 1
+	Global.quest_number += 1
 	
-	if (current_dialogue_id >= len(dialogue)):
+	if (Global.quest_number >= len(dialogue)):
 		d_active = false
 		$NinePatchRect.visible = false
-		current_dialogue_id = -1 #this definitely does not have the right design atm
+		#current_dialogue_id = -1 #this definitely does not have the right design atm
 		emit_signal("dialogue_finished")
-	$NinePatchRect/TargetItem.text = "[center]" + dialogue[current_dialogue_id]["TargetItem"] + "[/center]"
+	$NinePatchRect/TargetItem.text = "[center]" + dialogue[Global.quest_number]["TargetItem"] + "[/center]"

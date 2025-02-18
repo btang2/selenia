@@ -32,15 +32,14 @@ func _process(_delta) -> void:
 	
 	#movement/switching state mechanic goes here
 	if (player_in_chat_zone): 
-		var has_quest_items = check_quest(current_dialogue_id)
+		var has_quest_items = check_quest(Global.quest_number)
 		$Chatbox.player_has_required = has_quest_items
 		if (Input.is_action_just_pressed("chat")):
 			if (!is_chatting):
 				print("chatting w/ alien")
 				c_key.visible = false
 				equal_key.visible = has_quest_items
-				$Chatbox.start(current_dialogue_id)
-				current_dialogue_id = $Chatbox.current_dialogue_id 
+				$Chatbox.start()
 				is_chatting = true
 				print(current_dialogue_id) #check if 
 			else:
@@ -49,7 +48,6 @@ func _process(_delta) -> void:
 				c_key.visible = true
 				equal_key.visible = false
 				$Chatbox.cancel_dialogue()
-				current_dialogue_id = $Chatbox.current_dialogue_id 
 				is_chatting = false
 	#elif (!player_in_chat_zone):
 	#	current_dialogue_id = $Chatbox.current_dialogue_id - 1
@@ -93,14 +91,13 @@ func _on_chat_detection_body_exited(body: Node2D) -> void:
 		if (is_chatting):
 			is_chatting = false
 			$Chatbox.cancel_dialogue()
-			current_dialogue_id = $Chatbox.current_dialogue_id 
 		#print("player exited chat zone")
 
 func _on_chatbox_quest_completed() -> void:
 	#do everything needed on completed quest (update materials sfx, etc)
 	#update materials
 	print("completed quest")
-	fulfill_quest(current_dialogue_id)
+	fulfill_quest(Global.quest_number)
 	
 	#any sorta effects
 	
@@ -111,7 +108,6 @@ func _on_timer_timeout() -> void:
 	timer.wait_time = 1 #could be random, set later, state doesnt matter since idle atm
 	
 func _on_chatbox_dialogue_finished() -> void:
-	current_dialogue_id = $Chatbox.current_dialogue_id 
 	is_chatting = false
 
 

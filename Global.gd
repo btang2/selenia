@@ -7,7 +7,8 @@ var from_id = "" #default, change if not from somewhere, use when instantiating 
 #both should be initialized upon spawn
 var player_inv = ["", "", "", "", "", "", "", ""] #global record of player inventory
 var player_inv_count = [0, 0, 0, 0, 0, 0, 0, 0] #global record of player inventory count (how much each item)
-
+var quest_number = 0
+var time = PI #start out dawn
 
 func search_inv(id: String, count: int):
 	#inv should be designed and maintained to have no duplicates
@@ -26,9 +27,7 @@ func remove_inv(id: String, count: int):
 			Global.player_inv_count[i] -= count
 			if (Global.player_inv_count[i] == 0): #if <0, something has gone very wrong
 				Global.player_inv[i] = "" #nothing left
-				var children = %Inv.get_child(i).get_children() #update inv gui manually
-				for child in children:
-					child.free()
+				#weird partial error where the resource shows up but it's ont actually there... TODO fix
 			return
 
 func add_inv(id: String, count: int):

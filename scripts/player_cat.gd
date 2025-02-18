@@ -13,6 +13,7 @@ func _ready():
 	update_animation_parameters(starting_direction)
 
 func _physics_process(_delta):
+	$PointLight2D.energy = ((cos(Global.time) + 1.0) / 2.0) * 0.8
 	#input direction
 	var input_direction = Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
