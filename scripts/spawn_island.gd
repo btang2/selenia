@@ -18,6 +18,8 @@ func _ready() -> void:
 		$"magicfruit-1".visible = false
 		$"magicfruit-2".visible = false
 		$"magicfruit-3".visible = false
+		$to_island_1.portal_active = true
+		$to_island_1._ready()
 #this can surely to all scenes non-manually, surely, but will do manual for now
 
 

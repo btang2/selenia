@@ -2,10 +2,12 @@ extends Area2D
 
 var player
 var player_in_portal = false
-var portal_active = true #should start as false, but mechanic not implemneted
 
 @export var to = "spawn_island" #set this BEFORE making scene
 @export var from = "spawn" #target spawn point (marker2d), set BEFORE making scene
+
+@export var portal_active = false #should start as false, but mechanic not implemneted
+@export var color = "blue" #what color gem necessary to open
 
 @onready var timer = $Timer
 #TODO: add resource requirement to open portal, also TODO, make it custom for each portal
@@ -15,14 +17,37 @@ var portal_active = true #should start as false, but mechanic not implemneted
 
 func _ready():
 	#still need to pass target PlayerCat through 
-	
+	if (portal_active):
+		$AnimationPlayer.play(color)
+		$PointLight2D.visible = true
+	else:
+		$AnimationPlayer.play("idle")
+		$PointLight2D.visible = false
 	timer.wait_time = 3 #prevent portal loop
+	
+func _process(delta: float) -> void:
+	$PointLight2D.energy = ((cos(Global.time) + 1.0) / 2.0) * 0.5
+	if (Input.is_action_just_pressed("collect") && player_in_portal && !portal_active):
+		if (Global.search_inv("res://resources/" + color + "portalkey.tres", 1)):
+			#activate portal
+			print("portal from " + from + " to " + to + " opened")
+			$f_key.visible = false
+			portal_active = true
+			Global.remove_inv("res://resources/" + color + "portalkey.tres", 1)
+			$PointLight2D.visible = true
+			$AnimationPlayer.play(color)
+			
 
 func _on_body_entered(body: Node2D) -> void:
-	if (body.name.match("PlayerCat") && portal_active):
+	if (body.name.match("PlayerCat")):
 		player = body
 		player_in_portal = true
-		timer.start(2) #arbitrary atm, ideally start a global "fade out" type transition
+		if (portal_active):
+			timer.start(2) #arbitrary atm, ideally start a global "fade out" type transition
+		else:
+			#check if player has resource
+			if (Global.search_inv("res://resources/" + color + "portalkey.tres", 1)):
+				$f_key.visible = true
 		#var current_scene_file = get_tree().current_scene.scene_file_path #for debug
 
 
@@ -31,6 +56,7 @@ func _on_body_exited(body: Node2D) -> void:
 		player = body
 		player_in_portal = false
 		timer.stop()
+		$f_key.visible = false
 
 
 func _on_timer_timeout() -> void:

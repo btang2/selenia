@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://dyl4bxtcedacf"]
+
+[ext_resource type="Script" path="res://resources/itemdata.gd" id="1_qjjm0"]
+[ext_resource type="Texture2D" uid="uid://k8w1v3nv0mx7" path="res://art/item art/crafting_materials/resources_basic.png" id="2_jayn3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkna2"]
+atlas = ExtResource("2_jayn3")
+region = Rect2(72, 48, 24, 24)
+
+[resource]
+script = ExtResource("1_qjjm0")
+type = 2
+name = "purpleportalkey"
+texture = SubResource("AtlasTexture_tkna2")

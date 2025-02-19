@@ -68,7 +68,7 @@ func fulfill_quest(dialogue_id: int):
 	print("fulfilling quest: " + str(dialogue_id))
 	if (dialogue_id == 0):
 		Global.remove_inv("res://resources/magicfruit.tres", 3)
-		Global.add_inv("res://resources/portalkey.tres", 1)
+		Global.add_inv("res://resources/blueportalkey.tres", 1)
 	
 #search_inv, remove_inv, add_inv all global functions now
 

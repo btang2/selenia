@@ -226,14 +226,14 @@ states/Walk/position = Vector2(630, 100)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_acqlh"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_x0umj"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_yi8jg")]
 
 [sub_resource type="Gradient" id="Gradient_0gr3l"]
-offsets = PackedFloat32Array(0, 0.767677)
+offsets = PackedFloat32Array(0, 0.659933)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_uqqel"]
 gradient = SubResource("Gradient_0gr3l")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.0769231, 0.0811966)
+fill_to = Vector2(0.0042735, 0.0042735)
 
 [node name="PlayerCat" type="CharacterBody2D" groups=["PlayerCat"]]
 position = Vector2(-5, 0)
@@ -243,7 +243,6 @@ script = ExtResource("1_x66dk")
 texture = ExtResource("1_acm82")
 hframes = 4
 vframes = 4
-frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)

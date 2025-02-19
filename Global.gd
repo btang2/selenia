@@ -8,7 +8,7 @@ var from_id = "" #default, change if not from somewhere, use when instantiating 
 var player_inv = ["", "", "", "", "", "", "", ""] #global record of player inventory
 var player_inv_count = [0, 0, 0, 0, 0, 0, 0, 0] #global record of player inventory count (how much each item)
 var quest_number = 0
-var time = PI #start out dawn
+var time = 0 #start out midnight
 
 func search_inv(id: String, count: int):
 	#inv should be designed and maintained to have no duplicates

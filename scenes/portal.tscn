@@ -1,10 +1,108 @@
-[gd_scene load_steps=4 format=3 uid="uid://oynayhy2qfbs"]
+[gd_scene load_steps=13 format=3 uid="uid://oynayhy2qfbs"]
 
 [ext_resource type="Script" path="res://scripts/portal.gd" id="1_83rot"]
-[ext_resource type="Texture2D" uid="uid://bdh4a8y0pn7v4" path="res://art/sprout lands basic/Objects/Free_Chicken_House.png" id="2_ncsqg"]
+[ext_resource type="Texture2D" uid="uid://gl5vfkwfvue2" path="res://art/tilesets/portal.png" id="2_taeu6"]
+[ext_resource type="Texture2D" uid="uid://c5102tegcwsl4" path="res://art/keybord and controller icons/individual sprites/keyboard/F.png" id="3_ntery"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kf8yy"]
 radius = 30.0
+
+[sub_resource type="Gradient" id="Gradient_yofub"]
+offsets = PackedFloat32Array(0, 0.754209)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nr6vr"]
+gradient = SubResource("Gradient_yofub")
+fill = 1
+fill_from = Vector2(0.5, 0.45)
+fill_to = Vector2(0.5, 0.9)
+
+[sub_resource type="Animation" id="Animation_t5d22"]
+resource_name = "blue"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 5]
+}
+
+[sub_resource type="Animation" id="Animation_b7xxk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_itu3a"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_5kfs6"]
+resource_name = "purple"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 6]
+}
+
+[sub_resource type="Animation" id="Animation_hk1fx"]
+resource_name = "red"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1iw3g"]
+_data = {
+"RESET": SubResource("Animation_b7xxk"),
+"blue": SubResource("Animation_t5d22"),
+"idle": SubResource("Animation_itu3a"),
+"purple": SubResource("Animation_5kfs6"),
+"red": SubResource("Animation_hk1fx")
+}
 
 [node name="Portal" type="Area2D"]
 z_index = -3
@@ -13,12 +111,32 @@ script = ExtResource("1_83rot")
 [node name="Marker2D" type="Marker2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_ncsqg")
+scale = Vector2(3, 3)
+texture = ExtResource("2_taeu6")
+hframes = 4
+vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_kf8yy")
 
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(2, 2)
+energy = 0.8
+texture = SubResource("GradientTexture2D_nr6vr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Timer")
+libraries = {
+"": SubResource("AnimationLibrary_1iw3g")
+}
+
 [node name="Timer" type="Timer" parent="."]
+
+[node name="f_key" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -10)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_ntery")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

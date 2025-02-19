@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://b0bgm100mtkul"]
+
+[ext_resource type="Script" path="res://resources/itemdata.gd" id="1_ognjc"]
+[ext_resource type="Texture2D" uid="uid://k8w1v3nv0mx7" path="res://art/item art/crafting_materials/resources_basic.png" id="2_ub0hq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c72xp"]
+atlas = ExtResource("2_ub0hq")
+region = Rect2(0, 48, 24, 24)
+
+[resource]
+script = ExtResource("1_ognjc")
+type = 2
+name = "redportalkey"
+texture = SubResource("AtlasTexture_c72xp")
