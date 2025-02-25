@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var move_speed : float = 150 #100, is 300 for debugging purposes
 @export var starting_direction : Vector2 = Vector2(0, 1)
-
+@export var can_move = true
 
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
@@ -19,6 +19,8 @@ func _physics_process(_delta):
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 	)
+	if (!can_move):
+		input_direction = Vector2(0,0) #can't move
 	
 	#update velocity
 	velocity = input_direction * move_speed
