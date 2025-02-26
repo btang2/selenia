@@ -10,5 +10,5 @@ region = Rect2(24, 72, 24, 24)
 [resource]
 script = ExtResource("1_t7f46")
 type = 1
-name = ""
+name = "metalscrap"
 texture = SubResource("AtlasTexture_s582x")

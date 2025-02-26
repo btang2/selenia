@@ -33,11 +33,14 @@ func _process(delta: float) -> void:
 	elif (Input.is_action_just_pressed("enter_mine") && mining_minigame_active == true && !on_cooldown):
 		emit_signal("minigame_stopped")
 		mining_minigame_active = false
-		#handle ore gained in inventory?
+		#handle ore gained in inventory
+		if (Global.ore_mined > 0):
+			Global.add_inv("res://resources/metalore.tres", Global.ore_mined)
+		
 		
 		miningGame.queue_free()
 		
-		$Timer.start(1)
+		$Timer.start(0.25)
 		on_cooldown = true
 		
 	

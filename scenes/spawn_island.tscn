@@ -219,8 +219,6 @@ position = Vector2(0, -17)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("15_8eon7")
 
-[node name="move_instruction_timer" type="Timer" parent="."]
-
 [node name="inventory_gui" parent="." instance=ExtResource("16_bcwxw")]
 
 [node name="magicfruit-1" parent="." instance=ExtResource("17_6vvmj")]
@@ -231,5 +229,3 @@ position = Vector2(-138, 168)
 
 [node name="magicfruit-3" parent="." instance=ExtResource("17_6vvmj")]
 position = Vector2(484, -54)
-
-[connection signal="timeout" from="move_instruction_timer" to="." method="_on_move_instruction_timer_timeout"]

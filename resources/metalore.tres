@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://b1quyivhhcutr"]
+
+[ext_resource type="Script" path="res://resources/itemdata.gd" id="1_ps63h"]
+[ext_resource type="Texture2D" uid="uid://bino1urum5naq" path="res://art/tilesets/stone_ore.png" id="2_esdyl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41hgv"]
+atlas = ExtResource("2_esdyl")
+region = Rect2(16, 16, 16, 16)
+
+[resource]
+script = ExtResource("1_ps63h")
+type = 4
+name = "metalore"
+texture = SubResource("AtlasTexture_41hgv")

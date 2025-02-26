@@ -134,8 +134,8 @@ libraries = {
 
 [node name="f_key" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(0, -10)
-scale = Vector2(0.2, 0.2)
+position = Vector2(0, -12)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_ntery")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

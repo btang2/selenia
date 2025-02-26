@@ -14,6 +14,7 @@ var player_in_portal = false
 
 #func _ready(scene_path) -> void:
 #	new_scene_path = scene_path Bugged
+var t = 0.0
 
 func _ready():
 	#still need to pass target PlayerCat through 
@@ -23,10 +24,13 @@ func _ready():
 	else:
 		$AnimationPlayer.play("idle")
 		$PointLight2D.visible = false
-	timer.wait_time = 3 #prevent portal loop
+	timer.wait_time = 1.5 #prevent portal loop
 	
 func _process(delta: float) -> void:
+	t += 3*delta
 	$PointLight2D.energy = ((cos(Global.time) + 1.0) / 2.0) * 0.5
+	if ($f_key.visible):
+		$f_key.scale = Vector2(0.02*sin(t) + 0.25, 0.02*sin(t) + 0.25)
 	if (Input.is_action_just_pressed("collect") && player_in_portal && !portal_active):
 		if (Global.search_inv("res://resources/" + color + "portalkey.tres", 1)):
 			#activate portal

@@ -10,9 +10,11 @@ func _ready() -> void:
 
 func _on_mine_minigame_activated() -> void:
 	$PlayerCat.can_move = false
+	$PlayerCat/PointLight2D.visible = false
 
 
 
 func _on_mine_minigame_stopped() -> void:
 	$PlayerCat.can_move = true
-	#also disable/free the mining_minigame instance?
+	$PlayerCat/PointLight2D.visible = true
+	#also disable/free the mining_minigame instance? --> done

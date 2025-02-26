@@ -21,6 +21,7 @@ var current_dialogue_id = 0 #-1 originally
 var is_chatting = false
 var player
 var player_in_chat_zone = false
+var t = 0.0
 
 func _ready():
 	player_in_chat_zone = false
@@ -29,11 +30,16 @@ func _ready():
 	#pick_new_state()
 	
 func _process(_delta) -> void:
-	
+	t += 3*_delta
 	#movement/switching state mechanic goes here
 	if (player_in_chat_zone): 
 		var has_quest_items = check_quest(Global.quest_number)
 		$Chatbox.player_has_required = has_quest_items
+		if (c_key.visible):
+			c_key.scale = Vector2(0.02*sin(t) + 0.3, 0.02*sin(t) + 0.3)
+		if (equal_key.visible):
+			equal_key.scale = Vector2(0.02*sin(t) + 0.25, 0.02*sin(t) + 0.25)
+			
 		if (Input.is_action_just_pressed("chat")):
 			if (!is_chatting):
 				print("chatting w/ alien")
@@ -105,7 +111,7 @@ func _on_chatbox_quest_completed() -> void:
 	equal_key.visible = false
 
 func _on_timer_timeout() -> void:
-	timer.wait_time = 1 #could be random, set later, state doesnt matter since idle atm
+	timer.wait_time = 0.25 #could be random, set later, state doesnt matter since idle atm
 	
 func _on_chatbox_dialogue_finished() -> void:
 	is_chatting = false

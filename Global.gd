@@ -10,6 +10,9 @@ var player_inv_count = [0, 0, 0, 0, 0, 0, 0, 0] #global record of player invento
 var quest_number = 0
 var time = 0 #start out midnight
 
+var ore_mined = 0 #global variable for mining minigame
+var mining_cooldown = 0.5 #for mining (default 0.5), ideally exchange ore for pickaxe to reduce this
+
 func search_inv(id: String, count: int):
 	#inv should be designed and maintained to have no duplicates
 	var num_found = 0
