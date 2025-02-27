@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 
 func update():
 	for j in range(Global.player_inv.size()):
-		if (Global.player_inv[j] != "" && Global.player_inv_count[j] != 0): 
+		if (Global.player_inv[j] != "" && Global.player_inv_count[j] > 0): 
 			var children = %Inv.get_child(j).get_children()
 			for child in children:
 				child.free()
@@ -25,3 +25,8 @@ func update():
 			var count = InventoryCount.new(Global.player_inv_count[j])
 			%Inv.get_child(j).add_child(item)
 			%Inv.get_child(j).add_child(count)
+		elif (Global.player_inv[j] != "" && Global.player_inv_count[j] <= 0):
+			var children = %Inv.get_child(j).get_children()
+			for child in children:
+				child.free()
+			Global.player_inv[j] = ""

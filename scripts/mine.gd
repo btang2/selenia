@@ -17,10 +17,16 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if (player_in_region):
 		$mine_light.energy = ((cos(Global.time) + 1.0) / 2.0) * 0.7
+		if (on_cooldown):
+			$q_key.visible = false
+			$waiting_time.visible = true
+			var time_remaining = roundi($Timer.time_left)
+			if (time_remaining > 0):
+				$waiting_time.text = str(time_remaining)
 	else:
 		$mine_light.energy = ((cos(Global.time) + 1.0) / 2.0) * 0.2
-	#mine_light currently bugged
-
+		$waiting_time.visible = false
+	
 	if (Input.is_action_just_pressed("enter_mine") && player_in_region && mining_minigame_active == false && !on_cooldown):
 		emit_signal("minigame_activated")
 		mining_minigame_active = true
@@ -40,7 +46,7 @@ func _process(delta: float) -> void:
 		
 		miningGame.queue_free()
 		
-		$Timer.start(0.25)
+		$Timer.start(10.5) #game cooldown (before starting next mining game
 		on_cooldown = true
 		
 	
@@ -67,7 +73,12 @@ func _on_body_exited(body: Node2D) -> void:
 	if (body.name == "PlayerCat"):
 		player_in_region = false
 		$q_key.visible = false
+		$waiting_time.visible = false
 
 
 func _on_timer_timeout() -> void:
 	on_cooldown = false
+	$waiting_time.visible = false
+	if (player_in_region):
+		$q_key.visible = true
+	

@@ -34,8 +34,9 @@ func _input(event):
 		Global.quest_number += 1
 		$NinePatchRect/TargetItem.text = "[center]" + dialogue[Global.quest_number]["TargetItem"] + "[/center]"
 		
-		d_active = false
-		$NinePatchRect.visible = false
+		
+		#d_active = false
+		#$NinePatchRect.visible = false
 		#maybe change player has required to false -- recomputed anyways
 
 func cancel_dialogue():

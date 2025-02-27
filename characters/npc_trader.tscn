@@ -1,0 +1,167 @@
+[gd_scene load_steps=17 format=3 uid="uid://cg0b7sdi80pfr"]
+
+[ext_resource type="Script" path="res://characters/npc_trader.gd" id="1_dswqf"]
+[ext_resource type="Texture2D" uid="uid://kcmrvut4w5ya" path="res://art/sprout lands basic/Characters/Free Chicken Sprites.png" id="2_3w5p6"]
+[ext_resource type="Texture2D" uid="uid://dlduc5l4cuawj" path="res://art/misc personal assets/text_bubble.png" id="3_b4ys2"]
+[ext_resource type="Texture2D" uid="uid://b3x2113801wis" path="res://art/keybord and controller icons/individual sprites/keyboard/C button.png" id="4_jr3ip"]
+[ext_resource type="Texture2D" uid="uid://cha0e8mdeni4a" path="res://art/keybord and controller icons/individual sprites/keyboard/= equal.png" id="5_dw85i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aoa0w"]
+size = Vector2(9, 7)
+
+[sub_resource type="Animation" id="Animation_qo2la"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_v4bha"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 0]
+}
+
+[sub_resource type="Animation" id="Animation_qll3m"]
+resource_name = "sleep"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_hkvot"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nmcrp"]
+_data = {
+"RESET": SubResource("Animation_qo2la"),
+"idle": SubResource("Animation_v4bha"),
+"sleep": SubResource("Animation_qll3m"),
+"walk": SubResource("Animation_hkvot")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3b6yn"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_miuwl"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_3b6yn")
+blend_point_0/pos = 0.0
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j7iyq"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_axu6e"]
+states/Idle/node = SubResource("AnimationNodeBlendSpace1D_miuwl")
+states/Idle/position = Vector2(392, 93)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_j7iyq")]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t6ref"]
+radius = 50.0
+
+[node name="npc_trader" type="CharacterBody2D"]
+script = ExtResource("1_dswqf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3w5p6")
+hframes = 4
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 3)
+shape = SubResource("RectangleShape2D_aoa0w")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nmcrp")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_axu6e")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Idle/blend_position = -0.00162601
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="speech_bubble" type="NinePatchRect" parent="."]
+offset_left = -4.0
+offset_top = -40.0
+offset_right = 73.0
+offset_bottom = 1.0
+texture = ExtResource("3_b4ys2")
+
+[node name="textbox" type="RichTextLabel" parent="speech_bubble"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 7.0
+offset_right = 194.0
+offset_bottom = 54.0
+scale = Vector2(0.3, 0.3)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "find \"item\""
+
+[node name="chat_detection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chat_detection"]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_t6ref")
+
+[node name="c_key" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -10)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("4_jr3ip")
+
+[node name="equal_key" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(50, -15)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_dw85i")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="chat_detection" to="." method="_on_chat_detection_body_entered"]
+[connection signal="body_exited" from="chat_detection" to="." method="_on_chat_detection_body_exited"]

@@ -11,7 +11,9 @@ var quest_number = 0
 var time = 0 #start out midnight
 
 var ore_mined = 0 #global variable for mining minigame
-var mining_cooldown = 0.5 #for mining (default 0.5), ideally exchange ore for pickaxe to reduce this
+var mining_cooldown = 0.25 #for mining (default 0.25), ideally exchange ore for pickaxe to reduce this
+var ore_prob = 0.03 #probability a given stone block is actually ore (for generating map)
+#expected = 24*13*ore_prob (=0.03) ~ expected 9 ores per game
 
 func search_inv(id: String, count: int):
 	#inv should be designed and maintained to have no duplicates
@@ -23,13 +25,14 @@ func search_inv(id: String, count: int):
 	
 func remove_inv(id: String, count: int):
 	#inv should be designed and maintained to have no duplicates
-	#only call this function if there's fs enough to remove
+	#only call this function if there's for sure enough to remove
 	var num_found = 0
 	for i in range(Global.player_inv.size()):
 		if (Global.player_inv[i] == id):
 			Global.player_inv_count[i] -= count
-			if (Global.player_inv_count[i] == 0): #if <0, something has gone very wrong
-				Global.player_inv[i] = "" #nothing left
+			#player inv count = 0 is handles by inventory GUI (auto sets to [i] and clears children)
+			#if (Global.player_inv_count[i] == 0): #if <0, something has gone very wrong
+				#Global.player_inv[i] = "" #nothing left
 				#weird partial error where the resource shows up but it's ont actually there... TODO fix
 			return
 

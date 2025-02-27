@@ -47,7 +47,7 @@ func _process(_delta) -> void:
 				equal_key.visible = has_quest_items
 				$Chatbox.start()
 				is_chatting = true
-				print(current_dialogue_id) #check if 
+				#print(current_dialogue_id) #check if 
 			else:
 				print("stopped chatting w/ alien")
 				#current_dialogue_id = $Chatbox.current_dialogue_id - 1
@@ -66,7 +66,8 @@ func check_quest(dialogue_id: int):
 	#hard coded
 	if (dialogue_id == 0):
 		return Global.search_inv("res://resources/magicfruit.tres", 3)
-		
+	elif (dialogue_id == 1):
+		return Global.search_inv("res://resources/metalscrap.tres", 2)
 	return false
 
 func fulfill_quest(dialogue_id: int):
@@ -75,7 +76,9 @@ func fulfill_quest(dialogue_id: int):
 	if (dialogue_id == 0):
 		Global.remove_inv("res://resources/magicfruit.tres", 3)
 		Global.add_inv("res://resources/blueportalkey.tres", 1)
-	
+	elif (dialogue_id == 1):
+		Global.remove_inv("res://resources/metalscrap.tres", 2)
+		Global.add_inv("res://resources/redportalkey.tres", 1)
 #search_inv, remove_inv, add_inv all global functions now
 
 	

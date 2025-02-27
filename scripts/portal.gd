@@ -41,6 +41,9 @@ func _process(delta: float) -> void:
 			$PointLight2D.visible = true
 			$AnimationPlayer.play(color)
 			
+			if (player_in_portal):
+				timer.start(2)
+			
 
 func _on_body_entered(body: Node2D) -> void:
 	if (body.name.match("PlayerCat")):

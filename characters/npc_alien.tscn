@@ -133,6 +133,7 @@ position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_t6ref")
 
 [node name="Chatbox" parent="." instance=ExtResource("3_cmlje")]
+metadata/_edit_use_anchors_ = true
 
 [node name="c_key" type="Sprite2D" parent="."]
 visible = false

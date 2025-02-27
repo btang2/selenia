@@ -6,8 +6,11 @@ extends Label
 var count 
 func _init(c: int) -> void:
 	count = c
+	#scale = Vector2(0.5, 0.5) #should update, but doesnt?
 	
 func _ready() -> void:
+	
+	
 	text = str(count)
 	horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM 

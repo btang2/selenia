@@ -16,6 +16,8 @@ func _ready():
 func _physics_process(_delta):
 	local_time += _delta
 	$PointLight2D.energy = ((cos(Global.time) + 1.0) / 2.0) * 0.8 * (0.1*sin(local_time) + 0.9)
+	#$Sprite2D.modulate = Vector4((cos(Global.time) + 1.0) / 2.0),1,1,1)
+	#((cos(Global.time) + 1.0) / 2.0), (cos(Global.time) + 1.0) / 2.0), (cos(Global.time) + 1.0) / 2.0), 1)
 	#input direction
 	var input_direction = Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
