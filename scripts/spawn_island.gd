@@ -11,7 +11,7 @@ func _ready() -> void:
 		#Global.player_inv = ["res://resources/magicfruit.tres", "", "", "", "", "", "", ""]
 		#Global.player_inv_count = [1, 0, 0, 0, 0, 0, 0, 0]
 		#$inventory_gui.update()
-	if (Global.quest_number == 0):
+	if (Global.quest_number <= 0):
 		$"magicfruit-1".visible = true
 		$"magicfruit-2".visible = true
 		$"magicfruit-3".visible = true
@@ -19,7 +19,9 @@ func _ready() -> void:
 		$"magicfruit-1".visible = false
 		$"magicfruit-2".visible = false
 		$"magicfruit-3".visible = false
-		$to_island_1.portal_active = true
+	
+	if (Global.portal_s1_active):
+		$to_island_1.portal_active = true 
 		$to_island_1._ready()
 #this can surely to all scenes non-manually, surely, but will do manual for now
 

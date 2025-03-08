@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://cx6evccv12xgy"]
+[gd_scene load_steps=20 format=4 uid="uid://cx6evccv12xgy"]
 
 [ext_resource type="Script" path="res://scripts/island_1.gd" id="1_2xqfp"]
 [ext_resource type="PackedScene" uid="uid://qtcdgg88thym" path="res://scenes/daynight_modulate.tscn" id="2_jjr6x"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://oynayhy2qfbs" path="res://scenes/portal.tscn" id="4_vgvxl"]
 [ext_resource type="PackedScene" uid="uid://cg0b7sdi80pfr" path="res://characters/npc_trader.tscn" id="5_0bghl"]
 [ext_resource type="PackedScene" uid="uid://cn7tikxa3bwrt" path="res://characters/player_cat.tscn" id="5_fpbs7"]
+[ext_resource type="PackedScene" uid="uid://f2kwi3v03aew" path="res://art/kenney ui assets/PNG/Grey/quest_progress_bar.tscn" id="5_w8u2s"]
 [ext_resource type="Texture2D" uid="uid://bq15a8wu6vi5e" path="res://art/misc personal assets/signs/sign-2.png" id="7_hqg2r"]
 [ext_resource type="Texture2D" uid="uid://sof4yceo0vpm" path="res://art/misc personal assets/signs/sign-s.png" id="8_evuqo"]
 [ext_resource type="PackedScene" uid="uid://bepqvcbkowoej" path="res://resources/inventory_gui.tscn" id="9_1q1li"]
@@ -96,11 +97,18 @@ tile_map_data = PackedByteArray("AAAAAAAAAQACAAEAAAAAAAEAAQACAAEAAAAAAAIAAQACAAE
 tile_set = SubResource("TileSet_dkd3e")
 metadata/_edit_lock_ = true
 
+[node name="inventory_gui" parent="." instance=ExtResource("9_1q1li")]
+
+[node name="quest_progress_bar" parent="." instance=ExtResource("5_w8u2s")]
+
 [node name="PlayerCat" parent="." instance=ExtResource("5_fpbs7")]
 position = Vector2(-102, 125)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="PlayerCat"]
 remote_path = NodePath("../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-102, 125)
 
 [node name="npc_blacksmith" parent="." instance=ExtResource("5_0bghl")]
 position = Vector2(571, 77)
@@ -109,15 +117,12 @@ input_resource_quantity = 6
 output_resource = "metalscrap"
 output_resource_quantity = 1
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-102, 125)
-
-[node name="to_spawn" parent="." instance=ExtResource("4_vgvxl")]
+[node name="to_spawn_island" parent="." instance=ExtResource("4_vgvxl")]
 position = Vector2(-100, 78)
 from = "island_1"
 portal_active = true
 
-[node name="from_spawn" type="Marker2D" parent="."]
+[node name="from_spawn_island" type="Marker2D" parent="."]
 position = Vector2(-100, 129)
 
 [node name="Sign-s" type="Sprite2D" parent="."]
@@ -138,8 +143,6 @@ position = Vector2(304, -312)
 position = Vector2(305, -335)
 scale = Vector2(0.02, 0.02)
 texture = ExtResource("7_hqg2r")
-
-[node name="inventory_gui" parent="." instance=ExtResource("9_1q1li")]
 
 [node name="Mine" type="Area2D" parent="."]
 z_index = -1

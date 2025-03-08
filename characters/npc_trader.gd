@@ -48,7 +48,7 @@ func _process(_delta) -> void:
 	#TODO movement/switching state mechanic goes here -- this actually useful for wandering npc
 	
 	if (player_in_chat_zone && trade_possible): 
-		var has_trade_items = Global.search_inv("res://resources/" + input_resource + ".tres", input_resource_quantity)
+		var has_trade_items = Global.search_inv("res://resources/" + input_resource + ".tres") >=  input_resource_quantity
 		#SHOULD NOT BE RELIANT ON CHATBOX -- use internal mechanism
 		#$Chatbox.player_has_required = has_trade_items
 		if (c_key.visible):
@@ -84,7 +84,7 @@ func _process(_delta) -> void:
 				trade_possible = false
 				speech_bubble.visible = false
 			else:
-				equal_key.visible = Global.search_inv("res://resources/" + input_resource + ".tres", input_resource_quantity)
+				equal_key.visible = Global.search_inv("res://resources/" + input_resource + ".tres") >= input_resource_quantity
 	#elif (!player_in_chat_zone):
 	#	current_dialogue_id = $Chatbox.current_dialogue_id - 1
 	#	$Chatbox.cancel_dialogue()

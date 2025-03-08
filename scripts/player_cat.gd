@@ -11,6 +11,8 @@ var has_apple = false
 var local_time = 0.0
 
 func _ready():
+	if (Global.developer_mode):
+		move_speed = 300
 	update_animation_parameters(starting_direction)
 
 func _physics_process(_delta):

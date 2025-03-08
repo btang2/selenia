@@ -10,8 +10,13 @@ var mining_active = false
 @onready var ore_tileset = $MiningGame/PanelContainer/MiningTiles/ores
 
 func _ready() -> void:
+	if (Global.developer_mode):
+		Global.mining_cooldown = 0.01
+		Global.ore_prob = 0.25
+		$MiningGame/PanelContainer/MiningTiles/CanvasModulate.visible = false
 	#set up mining gametiles (in ore_tileset), hard-coded for now :(
 	#TL corner is (3,2), BR corner is (26,14), player start is (15,8)
+	
 	mining_active = false
 	
 	var rng = RandomNumberGenerator.new()

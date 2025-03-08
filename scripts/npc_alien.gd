@@ -47,6 +47,10 @@ func _process(_delta) -> void:
 				equal_key.visible = has_quest_items
 				$Chatbox.start()
 				is_chatting = true
+				
+				if (Global.quest_number == -1):
+					Global.quest_number = 0
+	
 				#print(current_dialogue_id) #check if 
 			else:
 				print("stopped chatting w/ alien")
@@ -55,7 +59,7 @@ func _process(_delta) -> void:
 				equal_key.visible = false
 				$Chatbox.cancel_dialogue()
 				is_chatting = false
-	#elif (!player_in_chat_zone):
+	#elif (!player_in_chat_zone):			
 	#	current_dialogue_id = $Chatbox.current_dialogue_id - 1
 	#	$Chatbox.cancel_dialogue()
 	#	is_chatting = false
@@ -65,9 +69,9 @@ func _process(_delta) -> void:
 func check_quest(dialogue_id: int):
 	#hard coded
 	if (dialogue_id == 0):
-		return Global.search_inv("res://resources/magicfruit.tres", 3)
+		return Global.search_inv("res://resources/magicfruit.tres") >= 3
 	elif (dialogue_id == 1):
-		return Global.search_inv("res://resources/metalscrap.tres", 2)
+		return Global.search_inv("res://resources/metalscrap.tres") >= 2
 	return false
 
 func fulfill_quest(dialogue_id: int):

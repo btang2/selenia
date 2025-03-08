@@ -10,6 +10,16 @@ var d_active = false
 func _ready():
 	$NinePatchRect.visible = false
 	
+func getSpriteTexture():
+	#sadly, hardcoded
+	if (Global.quest_number <= 0):
+		return preload("res://resources/magicfruit.tres").texture
+	elif (Global.quest_number == 1):
+		return preload("res://resources/metalscrap.tres").texture
+	elif (Global.quest_number == 2):
+		return preload("res://resources/purpleportalkey.tres").texture #placeholder
+	else:
+		return preload("res://resources/purpleportalkey.tres").texture
 func start():
 	if (d_active):
 		return
@@ -17,8 +27,14 @@ func start():
 	$NinePatchRect.visible = true
 	dialogue = load_dialogue()
 	#current_dialogue_id = cur_id
-	$NinePatchRect/TargetItem.text = "[center]" + dialogue[Global.quest_number]["TargetItem"] + "[/center]"
+	
+	$NinePatchRect/TargetItem.text = str(dialogue[max(Global.quest_number, 0)]["quantity"]) + "x"
+	#"[center]" + dialogue[max(Global.quest_number, 0)]["TargetItem"] + "[/center]"
+	#can't preload non-constant texture :( so have to hardcode
+	$NinePatchRect/Sprite2D.texture = getSpriteTexture()
 	#next_script()
+
+
 	
 
 func load_dialogue():
@@ -32,8 +48,9 @@ func _input(event):
 		#next_script()
 		emit_signal("quest_completed") #important to keep here for order
 		Global.quest_number += 1
-		$NinePatchRect/TargetItem.text = "[center]" + dialogue[Global.quest_number]["TargetItem"] + "[/center]"
-		
+		$NinePatchRect/TargetItem.text = str(dialogue[max(Global.quest_number, 0)]["quantity"]) + "x"
+		#$NinePatchRect/TargetItem.text = "[center]" + dialogue[max(Global.quest_number,0)]["TargetItem"] + "[/center]"
+		$NinePatchRect/Sprite2D.texture = getSpriteTexture()
 		
 		#d_active = false
 		#$NinePatchRect.visible = false
@@ -56,4 +73,6 @@ func next_script():
 		$NinePatchRect.visible = false
 		#current_dialogue_id = -1 #this definitely does not have the right design atm
 		emit_signal("dialogue_finished")
-	$NinePatchRect/TargetItem.text = "[center]" + dialogue[Global.quest_number]["TargetItem"] + "[/center]"
+	$NinePatchRect/TargetItem.text = str(dialogue[max(Global.quest_number, 0)]["quantity"]) + "x"
+	#$NinePatchRect/TargetItem.text = "[center]" + dialogue[Global.quest_number]["TargetItem"] + "[/center]"
+	$NinePatchRect/Sprite2D.texture = getSpriteTexture()

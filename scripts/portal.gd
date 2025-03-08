@@ -4,9 +4,9 @@ var player
 var player_in_portal = false
 
 @export var to = "spawn_island" #set this BEFORE making scene
-@export var from = "spawn" #target spawn point (marker2d), set BEFORE making scene
+@export var from = "spawn_island" #target spawn point (marker2d), set BEFORE making scene
 
-@export var portal_active = false #should start as false, but mechanic not implemneted
+@export var portal_active: bool = false #should start as false, but mechanic not implemneted
 @export var color = "blue" #what color gem necessary to open
 
 @onready var timer = $Timer
@@ -18,6 +18,8 @@ var t = 0.0
 
 func _ready():
 	#still need to pass target PlayerCat through 
+	
+	
 	if (portal_active):
 		$AnimationPlayer.play(color)
 		$PointLight2D.visible = true
@@ -32,11 +34,27 @@ func _process(delta: float) -> void:
 	if ($f_key.visible):
 		$f_key.scale = Vector2(0.02*sin(t) + 0.25, 0.02*sin(t) + 0.25)
 	if (Input.is_action_just_pressed("collect") && player_in_portal && !portal_active):
-		if (Global.search_inv("res://resources/" + color + "portalkey.tres", 1)):
+		if (Global.search_inv("res://resources/" + color + "portalkey.tres") >= 1):
 			#activate portal
 			print("portal from " + from + " to " + to + " opened")
 			$f_key.visible = false
+			#update local and global portal active
 			portal_active = true
+			#nasty if statement
+			if (from == "spawn_island" && to == "island_1"):
+				Global.portal_s1_active = true
+			elif (from == "island_1" && to == "island_2"):
+				Global.portal_12_active = true
+			elif (from == "island_2" && to == "island_3"):
+				Global.portal_23_active = true
+			elif (from == "island_2" && to == "island_4"):
+				Global.portal_24_active = true
+			elif (from == "island_4" && to == "island_5"):
+				Global.portal_45_active = true
+			elif (from == "island_2" && to == "island_6"):
+				Global.portal_26_active = true
+			elif (from == "island_2" && to == "island_7"):
+				Global.portal_27_active = true
 			Global.remove_inv("res://resources/" + color + "portalkey.tres", 1)
 			$PointLight2D.visible = true
 			$AnimationPlayer.play(color)
@@ -53,7 +71,7 @@ func _on_body_entered(body: Node2D) -> void:
 			timer.start(2) #arbitrary atm, ideally start a global "fade out" type transition
 		else:
 			#check if player has resource
-			if (Global.search_inv("res://resources/" + color + "portalkey.tres", 1)):
+			if (Global.search_inv("res://resources/" + color + "portalkey.tres") >= 1):
 				$f_key.visible = true
 		#var current_scene_file = get_tree().current_scene.scene_file_path #for debug
 

@@ -1,9 +1,9 @@
 [
-	{"TargetItem": "3x magic fruit"},
-	{"TargetItem": "2x metal patch"},
-	{"TargetItem": "full fuel tank"},
-	{"TargetItem": "3 engine parts"}, 
-	{"TargetItem": "radiator valve"},
-	{"TargetItem": "electrical wires"},
-	{"TargetItem": "go fix spaceship"}
+	{"TargetItem": "magicfruit", "quantity": 3},
+	{"TargetItem": "metalscrap", "quantity": 2},
+	{"TargetItem": "full fuel tank", "quantity": 1},
+	{"TargetItem": "engine parts", "quantity": 3}, 
+	{"TargetItem": "radiator valve", "quantity": 1},
+	{"TargetItem": "electrical wires", "quantity": 4},
+	{"TargetItem": "go fix spaceship", "quantity": -1}
 ]

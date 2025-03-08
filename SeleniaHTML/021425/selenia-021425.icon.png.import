@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cm84o3fej2e8d"
-path="res://.godot/imported/selenia-021425.icon.png-6eecb8bf8482aed0bbac8ca811b750a0.ctex"
+path="res://.godot/imported/selenia-021425.icon.png-a1857ecbd25034ba224a46dd680fceef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://021425SeleniaHTML/selenia-021425.icon.png"
-dest_files=["res://.godot/imported/selenia-021425.icon.png-6eecb8bf8482aed0bbac8ca811b750a0.ctex"]
+source_file="res://SeleniaHTML/021425/selenia-021425.icon.png"
+dest_files=["res://.godot/imported/selenia-021425.icon.png-a1857ecbd25034ba224a46dd680fceef.ctex"]
 
 [params]
 
