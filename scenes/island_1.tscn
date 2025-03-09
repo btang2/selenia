@@ -111,7 +111,7 @@ remote_path = NodePath("../../Camera2D")
 position = Vector2(-102, 125)
 
 [node name="npc_blacksmith" parent="." instance=ExtResource("5_0bghl")]
-position = Vector2(571, 77)
+position = Vector2(388, -87)
 input_resource = "metalore"
 input_resource_quantity = 6
 output_resource = "metalscrap"

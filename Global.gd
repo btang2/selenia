@@ -29,7 +29,7 @@ var mining_cooldown = 0.25 #for mining (default 0.25), ideally exchange ore for 
 var ore_prob = 0.03 #probability a given stone block is actually ore (for generating map)
 #expected = 24*13*ore_prob (=0.03) ~ expected 9 ores per game
 
-var developer_mode = true #true == on (easy mode)
+var developer_mode = false #true == on (easy mode)
 
 func search_inv(id: String):
 	#inv should be designed and maintained to have no duplicates

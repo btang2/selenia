@@ -188,7 +188,7 @@ color = Color(0.0986062, 0.0802073, 0.142466, 1)
 
 [node name="MinerCat" parent="." instance=ExtResource("3_h7jpv")]
 modulate = Color(0.779291, 0.779291, 0.779291, 1)
-position = Vector2(248, 135)
+position = Vector2(248, 137)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="MinerCat"]
 remote_path = NodePath("..")

@@ -1,13 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://cg0b7sdi80pfr"]
+[gd_scene load_steps=20 format=3 uid="uid://cg0b7sdi80pfr"]
 
 [ext_resource type="Script" path="res://characters/npc_trader.gd" id="1_dswqf"]
-[ext_resource type="Texture2D" uid="uid://kcmrvut4w5ya" path="res://art/sprout lands basic/Characters/Free Chicken Sprites.png" id="2_3w5p6"]
+[ext_resource type="Texture2D" uid="uid://tk3sakhhdiw6" path="res://art/character assets/Mushroom with VFX/Mushroom-Idle.png" id="2_simvq"]
 [ext_resource type="Texture2D" uid="uid://dlduc5l4cuawj" path="res://art/misc personal assets/text_bubble.png" id="3_b4ys2"]
 [ext_resource type="Texture2D" uid="uid://b3x2113801wis" path="res://art/keybord and controller icons/individual sprites/keyboard/C button.png" id="4_jr3ip"]
+[ext_resource type="Texture2D" uid="uid://b6e0psoavltdk" path="res://art/items.png" id="4_w5igx"]
 [ext_resource type="Texture2D" uid="uid://cha0e8mdeni4a" path="res://art/keybord and controller icons/individual sprites/keyboard/= equal.png" id="5_dw85i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aoa0w"]
-size = Vector2(9, 7)
+size = Vector2(12, 13.5)
 
 [sub_resource type="Animation" id="Animation_qo2la"]
 length = 0.001
@@ -38,7 +39,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 0]
+"values": [0, 1]
 }
 
 [sub_resource type="Animation" id="Animation_qll3m"]
@@ -99,6 +100,14 @@ states/Idle/node = SubResource("AnimationNodeBlendSpace1D_miuwl")
 states/Idle/position = Vector2(392, 93)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_j7iyq")]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yffa"]
+atlas = ExtResource("4_w5igx")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xx4yx"]
+atlas = ExtResource("4_w5igx")
+region = Rect2(0, 0, 32, 32)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_t6ref"]
 radius = 50.0
 
@@ -106,12 +115,13 @@ radius = 50.0
 script = ExtResource("1_dswqf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_3w5p6")
-hframes = 4
-vframes = 2
+position = Vector2(0, -10)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_simvq")
+hframes = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 3)
+position = Vector2(0, 6.25)
 shape = SubResource("RectangleShape2D_aoa0w")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -127,22 +137,54 @@ parameters/Idle/blend_position = -0.00162601
 [node name="Timer" type="Timer" parent="."]
 
 [node name="speech_bubble" type="NinePatchRect" parent="."]
-offset_left = -4.0
-offset_top = -40.0
-offset_right = 73.0
-offset_bottom = 1.0
+offset_left = -17.0
+offset_top = -50.0
+offset_right = 74.0
+offset_bottom = -7.0
 texture = ExtResource("3_b4ys2")
 
-[node name="textbox" type="RichTextLabel" parent="speech_bubble"]
+[node name="input_text" type="RichTextLabel" parent="speech_bubble"]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 7.0
-offset_right = 194.0
+offset_left = 15.0
+offset_top = 10.0
+offset_right = 45.0
 offset_bottom = 54.0
 scale = Vector2(0.3, 0.3)
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
-text = "find \"item\""
+text = "3x"
+
+[node name="arrow" type="RichTextLabel" parent="speech_bubble"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 10.0
+offset_right = 91.0
+offset_bottom = 43.0
+scale = Vector2(0.3, 0.3)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "----->"
+
+[node name="output_text" type="RichTextLabel" parent="speech_bubble"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 10.0
+offset_right = 95.0
+offset_bottom = 47.0
+scale = Vector2(0.3, 0.3)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "6x"
+
+[node name="input_sprite" type="Sprite2D" parent="speech_bubble"]
+position = Vector2(31, 14)
+scale = Vector2(0.8, 0.8)
+texture = SubResource("AtlasTexture_8yffa")
+
+[node name="output_sprite" type="Sprite2D" parent="speech_bubble"]
+position = Vector2(72, 14)
+scale = Vector2(0.8, 0.8)
+texture = SubResource("AtlasTexture_xx4yx")
 
 [node name="chat_detection" type="Area2D" parent="."]
 

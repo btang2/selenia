@@ -24,8 +24,6 @@ enum COW_STATE {IDLE, WALK}
 @onready var timer = $Timer
 @onready var c_key = $c_key
 @onready var equal_key = $equal_key
-@onready var speech_bubble = $speech_bubble
-@onready var textbox = $speech_bubble/textbox
 
 
 var is_chatting = false
@@ -37,15 +35,30 @@ var trade_possible = true
 
 func _ready():
 	player_in_chat_zone = false
-	speech_bubble.visible = false
-	textbox.text = "[center]" + str(input_resource_quantity) + "x " + input_resource + "\n --> " + str(output_resource_quantity) + "x " + output_resource + "[/center]"
+	$speech_bubble.visible = false
+	$speech_bubble/input_text.text = str(input_resource_quantity) + "x" 
+	$speech_bubble/input_sprite.texture = getSpriteTexture(input_resource)
+	$speech_bubble/output_text.text = str(output_resource_quantity) + "x" 
+	$speech_bubble/output_sprite.texture = getSpriteTexture(output_resource)
+	#+ input_resource + "\n --> " + str(output_resource_quantity) + "x " + output_resource + "[/center]"
 	#sprite.flip_h = true
 	#select_new_direction()
 	#pick_new_state()
-	
+
+func getSpriteTexture(resource):
+	print("getting texture " + resource)
+	if (resource == "metalore"):
+		return preload("res://resources/metalore.tres").texture
+	elif (resource == "metalscrap"):
+		return preload("res://resources/metalscrap.tres").texture
+	else:
+		#harcode as needed
+		return preload("res://resources/purpleportalkey.tres").texture
+
 func _process(_delta) -> void:
 	t += 3*_delta
 	#TODO movement/switching state mechanic goes here -- this actually useful for wandering npc
+	
 	
 	if (player_in_chat_zone && trade_possible): 
 		var has_trade_items = Global.search_inv("res://resources/" + input_resource + ".tres") >=  input_resource_quantity
@@ -61,7 +74,7 @@ func _process(_delta) -> void:
 				print("chatting w/ trader")
 				c_key.visible = false
 				equal_key.visible = has_trade_items
-				speech_bubble.visible = true
+				$speech_bubble.visible = true
 				is_chatting = true
 
 			else:
@@ -69,7 +82,7 @@ func _process(_delta) -> void:
 				#current_dialogue_id = $Chatbox.current_dialogue_id - 1
 				c_key.visible = true
 				equal_key.visible = false
-				speech_bubble.visible = false
+				$speech_bubble.visible = false
 				is_chatting = false
 				
 		if (Input.is_action_just_pressed("fulfill_quest") && has_trade_items): #fulfill quest same as trade
@@ -82,7 +95,7 @@ func _process(_delta) -> void:
 			#check repeatability
 			if (!trade_repeatable):
 				trade_possible = false
-				speech_bubble.visible = false
+				$speech_bubble.visible = false
 			else:
 				equal_key.visible = Global.search_inv("res://resources/" + input_resource + ".tres") >= input_resource_quantity
 	#elif (!player_in_chat_zone):
@@ -110,7 +123,7 @@ func _on_chat_detection_body_exited(body: Node2D) -> void:
 		equal_key.visible = false
 		if (is_chatting):
 			is_chatting = false
-			speech_bubble.visible = false
+			$speech_bubble.visible = false
 		#print("player exited chat zone")
 
 func _on_timer_timeout() -> void:
