@@ -3,8 +3,9 @@
 [ext_resource type="Script" path="res://scripts/player_cat.gd" id="1_x66dk"]
 [ext_resource type="Texture2D" uid="uid://bk8rx3n3pe2ge" path="res://art/character assets/space man.png" id="2_1paau"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sk1oc"]
-size = Vector2(11, 8)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l64ek"]
+radius = 5.0
+height = 10.0
 
 [sub_resource type="Animation" id="Animation_a40wd"]
 length = 0.001
@@ -303,8 +304,8 @@ vframes = 3
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
-shape = SubResource("RectangleShape2D_sk1oc")
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_l64ek")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -278,8 +278,8 @@ states/Walk/node = SubResource("AnimationNodeBlendSpace2D_hnya7")
 states/Walk/position = Vector2(630, 100)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_acqlh"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_x0umj"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_yi8jg")]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sk1oc"]
-size = Vector2(10, 15)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6n5u1"]
+size = Vector2(8, 12)
 
 [sub_resource type="Gradient" id="Gradient_0gr3l"]
 offsets = PackedFloat32Array(0, 0.659933)
@@ -315,8 +315,8 @@ parameters/Idle/blend_position = Vector2(-0.00174218, 1.05259)
 parameters/Walk/blend_position = Vector2(0, 0.948276)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_sk1oc")
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_6n5u1")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false

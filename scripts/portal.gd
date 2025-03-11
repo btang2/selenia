@@ -33,6 +33,16 @@ func _process(delta: float) -> void:
 	$PointLight2D.energy = ((cos(Global.time) + 1.0) / 2.0) * 0.5
 	if ($f_key.visible):
 		$f_key.scale = Vector2(0.02*sin(t) + 0.25, 0.02*sin(t) + 0.25)
+	
+	if (portal_active && player_in_portal):
+		#self modulate to show portal on
+		var brightness =  1 - sin(PI / 2 * timer.time_left / 2.0) #is fade out or in cooler?
+		$Sprite2D.self_modulate = Color(0.2 + 0.8*brightness, 0.2 + 0.8*brightness, 0.2 + 0.8*brightness)
+	#elif (portal_active):
+	#	$Sprite2D.self_modulate = Color(0.8, 0.8, 0.8)
+	else:
+		$Sprite2D.self_modulate = Color(0.8, 0.8, 0.8)
+	
 	if (Input.is_action_just_pressed("collect") && player_in_portal && !portal_active):
 		if (Global.search_inv("res://resources/" + color + "portalkey.tres") >= 1):
 			#activate portal

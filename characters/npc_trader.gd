@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
-enum COW_STATE {IDLE, WALK}
+enum TRADER_STATE {IDLE, WALK}
 
-@export var move_speed : float = 20
+@export var move_speed : float = 15
 @export var walk_time: float = 5
 @export var idle_time: float = 2
+
 
 #basically same as npc_alien, but only has one functionality (trade x resource for y resource)
 #some are repeatable, some aren't
@@ -32,6 +33,7 @@ var player_in_chat_zone = false
 var t = 0.0
 var move_direction = Vector2(0,0)
 var trade_possible = true
+var traderstate = TRADER_STATE.IDLE #to be implemented very soon
 
 func _ready():
 	player_in_chat_zone = false
@@ -42,8 +44,8 @@ func _ready():
 	$speech_bubble/output_sprite.texture = getSpriteTexture(output_resource)
 	#+ input_resource + "\n --> " + str(output_resource_quantity) + "x " + output_resource + "[/center]"
 	#sprite.flip_h = true
-	#select_new_direction()
-	#pick_new_state()
+	select_new_direction()
+	pick_new_state()
 
 func getSpriteTexture(resource):
 	print("getting texture " + resource)
@@ -55,12 +57,41 @@ func getSpriteTexture(resource):
 		#harcode as needed
 		return preload("res://resources/purpleportalkey.tres").texture
 
+
+func _physics_process(_delta):
+	
+	if (traderstate == TRADER_STATE.WALK):
+		velocity = move_direction * move_speed
+		move_and_slide()
+	
+	
+func select_new_direction():
+	move_direction = Vector2(
+		randi_range(-1,1),
+		randi_range(-1,1)
+	)
+	if (move_direction.x < 0):
+		sprite.flip_h = false
+	elif (move_direction.x > 0):
+		sprite.flip_h = true
+		
+
+func pick_new_state():
+	if (traderstate == TRADER_STATE.IDLE):
+		state_machine.travel("Walk")
+		traderstate = TRADER_STATE.WALK
+		select_new_direction()
+		timer.start(walk_time)
+	elif (traderstate == TRADER_STATE.WALK):
+		state_machine.travel("Idle")
+		traderstate = TRADER_STATE.IDLE
+		timer.start(idle_time)
+
 func _process(_delta) -> void:
 	t += 3*_delta
 	#TODO movement/switching state mechanic goes here -- this actually useful for wandering npc
 	
-	
-	if (player_in_chat_zone && trade_possible): 
+	if (player_in_chat_zone && trade_possible && traderstate == TRADER_STATE.IDLE): 
 		var has_trade_items = Global.search_inv("res://resources/" + input_resource + ".tres") >=  input_resource_quantity
 		#SHOULD NOT BE RELIANT ON CHATBOX -- use internal mechanism
 		#$Chatbox.player_has_required = has_trade_items
@@ -112,6 +143,8 @@ func _on_chat_detection_body_entered(body: Node2D) -> void:
 		player = body
 		player_in_chat_zone = true
 		c_key.visible = true
+		if (traderstate == TRADER_STATE.WALK):
+			c_key.visible = false
 		#print("player entered chat zone")
 
 
@@ -128,38 +161,13 @@ func _on_chat_detection_body_exited(body: Node2D) -> void:
 
 func _on_timer_timeout() -> void:
 	timer.wait_time = 0.25 #could be random, set later, state doesnt matter since idle atm
-	
-
-
-
-"""
-func _physics_process(_delta):
-	
-	#if (current_state == COW_STATE.WALK):
-	#	velocity = move_direction * move_speed
-	#	move_and_slide()
-	
-	
-func select_new_direction():
-	move_direction = Vector2(
-		randi_range(-1,1),
-		randi_range(-1,1)
-	)
-	if (move_direction.x < 0):
-		sprite.flip_h = true
-	elif (move_direction.x > 0):
-		sprite.flip_h = false
+	pick_new_state()
+	if (traderstate == TRADER_STATE.WALK):
+		c_key.visible = false
+		equal_key.visible = false
+		if (is_chatting):
+			is_chatting = false
+			$speech_bubble.visible = false
+	if (traderstate == TRADER_STATE.IDLE):
+		c_key.visible = true
 		
-
-func pick_new_state():
-	if (current_state == COW_STATE.IDLE):
-		state_machine.travel("Walk")
-		current_state = COW_STATE.WALK
-		select_new_direction()
-		timer.start(walk_time)
-	elif (current_state == COW_STATE.WALK):
-		state_machine.travel("Idle")
-		current_state = COW_STATE.IDLE
-		timer.start(idle_time)
-
-"""

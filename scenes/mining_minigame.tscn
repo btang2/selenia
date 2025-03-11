@@ -187,7 +187,7 @@ tile_set = SubResource("TileSet_py8na")
 color = Color(0.0986062, 0.0802073, 0.142466, 1)
 
 [node name="MinerCat" parent="." instance=ExtResource("3_h7jpv")]
-modulate = Color(0.779291, 0.779291, 0.779291, 1)
+modulate = Color(0.856067, 0.856067, 0.856067, 1)
 position = Vector2(248, 137)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="MinerCat"]
@@ -202,7 +202,7 @@ texture = ExtResource("7_re27u")
 [node name="light" type="PointLight2D" parent="MinerCat"]
 scale = Vector2(1.1, 1.1)
 color = Color(0.7804, 0.605721, 0.587638, 1)
-energy = 1.5
+energy = 1.75
 range_layer_min = 1
 range_layer_max = 1
 texture = SubResource("GradientTexture2D_6i8lm")

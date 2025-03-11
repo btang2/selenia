@@ -26,8 +26,8 @@ var time = 0 #start out midnight
 
 var ore_mined = 0 #global variable for mining minigame
 var mining_cooldown = 0.25 #for mining (default 0.25), ideally exchange ore for pickaxe to reduce this
-var ore_prob = 0.03 #probability a given stone block is actually ore (for generating map)
-#expected = 24*13*ore_prob (=0.03) ~ expected 9 ores per game
+var ore_prob = 0.05 #probability a given stone block is actually ore (for generating map)
+#expected = 24*13*ore_prob (=0.05) ~ expected ? ores per game
 
 var developer_mode = false #true == on (easy mode)
 

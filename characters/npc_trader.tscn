@@ -1,14 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://cg0b7sdi80pfr"]
+[gd_scene load_steps=23 format=3 uid="uid://cg0b7sdi80pfr"]
 
 [ext_resource type="Script" path="res://characters/npc_trader.gd" id="1_dswqf"]
-[ext_resource type="Texture2D" uid="uid://tk3sakhhdiw6" path="res://art/character assets/Mushroom with VFX/Mushroom-Idle.png" id="2_simvq"]
+[ext_resource type="Texture2D" uid="uid://bqpla7ora6ong" path="res://art/character assets/mushroom_combined.png" id="2_k2jyq"]
 [ext_resource type="Texture2D" uid="uid://dlduc5l4cuawj" path="res://art/misc personal assets/text_bubble.png" id="3_b4ys2"]
 [ext_resource type="Texture2D" uid="uid://b3x2113801wis" path="res://art/keybord and controller icons/individual sprites/keyboard/C button.png" id="4_jr3ip"]
 [ext_resource type="Texture2D" uid="uid://b6e0psoavltdk" path="res://art/items.png" id="4_w5igx"]
 [ext_resource type="Texture2D" uid="uid://cha0e8mdeni4a" path="res://art/keybord and controller icons/individual sprites/keyboard/= equal.png" id="5_dw85i"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aoa0w"]
-size = Vector2(12, 13.5)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_676tr"]
+radius = 6.0
+height = 15.5
 
 [sub_resource type="Animation" id="Animation_qo2la"]
 length = 0.001
@@ -27,7 +28,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_v4bha"]
 resource_name = "idle"
-length = 0.4
+length = 1.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -36,10 +37,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1]
+"values": [0, 1, 2, 3, 4, 5, 6]
 }
 
 [sub_resource type="Animation" id="Animation_qll3m"]
@@ -61,7 +62,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_hkvot"]
 resource_name = "walk"
-length = 0.4
+length = 1.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -70,10 +71,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [5, 6]
+"values": [7, 8, null, 10, 11, 12, 13, 14]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nmcrp"]
@@ -92,13 +93,22 @@ blend_point_0/node = SubResource("AnimationNodeAnimation_3b6yn")
 blend_point_0/pos = 0.0
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s7hfj"]
+animation = &"walk"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j7iyq"]
 advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qoo70"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2x0eo"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_axu6e"]
 states/Idle/node = SubResource("AnimationNodeBlendSpace1D_miuwl")
 states/Idle/position = Vector2(392, 93)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_j7iyq")]
+states/Walk/node = SubResource("AnimationNodeAnimation_s7hfj")
+states/Walk/position = Vector2(602, 96)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_j7iyq"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_qoo70"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_2x0eo")]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8yffa"]
 atlas = ExtResource("4_w5igx")
@@ -117,12 +127,12 @@ script = ExtResource("1_dswqf")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -10)
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("2_simvq")
-hframes = 7
+texture = ExtResource("2_k2jyq")
+hframes = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6.25)
-shape = SubResource("RectangleShape2D_aoa0w")
+shape = SubResource("CapsuleShape2D_676tr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -132,7 +142,7 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_axu6e")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Idle/blend_position = -0.00162601
+parameters/Idle/blend_position = -0.41989
 
 [node name="Timer" type="Timer" parent="."]
 

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8bjsb8r48gwd"]
+
+[ext_resource type="AudioStream" uid="uid://fdjv8mp5ceuc" path="res://art/sounds/selenia_soundtrack.wav" id="1_3y54t"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_3y54t")
+autoplay = true

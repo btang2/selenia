@@ -42,14 +42,14 @@ func update():
 			Global.quest_part = 1
 		
 		#transition
-		if (Global.quest_part == 1 && Global.search_inv("res://resources/metalore.tres") >= 12):
+		if (Global.quest_part == 1 && 6 * Global.search_inv("res://resources/metalscrap.tres") + Global.search_inv("res://resources/metalore.tres") >= 12):
 			#cooldown of sorts
 			Global.quest_part = 2
 	
 		if (Global.quest_part == 1):
 			$start_sprite.texture = preload("res://resources/blueportalkey.tres").texture
 			$end_sprite.texture = preload("res://resources/metalore.tres").texture
-			$quest_progress.value = 100*min(Global.search_inv("res://resources/metalore.tres"), 12) / 12.0
+			$quest_progress.value = 100*min(6 * Global.search_inv("res://resources/metalscrap.tres") + Global.search_inv("res://resources/metalore.tres"), 12) / 12.0
 		elif (Global.quest_part == 2):
 			$start_sprite.texture = preload("res://resources/metalore.tres").texture
 			$end_sprite.texture = preload("res://resources/metalscrap.tres").texture
