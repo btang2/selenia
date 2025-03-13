@@ -31,6 +31,7 @@ func _ready():
 	
 func _process(_delta) -> void:
 	t += 3*_delta
+	$PointLight2D.energy = ((cos(Global.time) + 1.0) / 2.0) * 0.5
 	#movement/switching state mechanic goes here
 	if (player_in_chat_zone): 
 		var has_quest_items = check_quest(Global.quest_number)
@@ -72,6 +73,8 @@ func check_quest(dialogue_id: int):
 		return Global.search_inv("res://resources/magicfruit.tres") >= 3
 	elif (dialogue_id == 1):
 		return Global.search_inv("res://resources/metalscrap.tres") >= 2
+	elif (dialogue_id == 2):
+		return Global.search_inv("res://resources/fullfueltank.tres") >= 3
 	return false
 
 func fulfill_quest(dialogue_id: int):
@@ -83,6 +86,10 @@ func fulfill_quest(dialogue_id: int):
 	elif (dialogue_id == 1):
 		Global.remove_inv("res://resources/metalscrap.tres", 2)
 		Global.add_inv("res://resources/redportalkey.tres", 1)
+	elif (dialogue_id == 2):
+		Global.remove_inv("res://resources/fullfueltank.tres", 3)
+		Global.add_inv("res://resources/purpleportalkey.tres", 1) #for islands?
+		
 #search_inv, remove_inv, add_inv all global functions now
 
 	

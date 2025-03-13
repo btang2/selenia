@@ -17,7 +17,7 @@ func getSpriteTexture():
 	elif (Global.quest_number == 1):
 		return preload("res://resources/metalscrap.tres").texture
 	elif (Global.quest_number == 2):
-		return preload("res://resources/purpleportalkey.tres").texture #placeholder
+		return preload("res://resources/fullfueltank.tres").texture #placeholder
 	else:
 		return preload("res://resources/purpleportalkey.tres").texture
 func start():

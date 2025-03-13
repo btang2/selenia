@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=4 uid="uid://buk7rdejqim70"]
 
 [ext_resource type="Script" path="res://scripts/spawn_island.gd" id="1_ij2p2"]
-[ext_resource type="PackedScene" uid="uid://f2kwi3v03aew" path="res://art/kenney ui assets/PNG/Grey/quest_progress_bar.tscn" id="2_2fae1"]
+[ext_resource type="PackedScene" uid="uid://f2kwi3v03aew" path="res://scenes/quest_progress_bar.tscn" id="2_2fae1"]
 [ext_resource type="PackedScene" uid="uid://qtcdgg88thym" path="res://scenes/daynight_modulate.tscn" id="2_5obrf"]
 [ext_resource type="Texture2D" uid="uid://ca3i6mi0omyy4" path="res://art/tilesets/selenia_ground.png" id="2_k18ei"]
 [ext_resource type="Texture2D" uid="uid://b0g0v3euet1e7" path="res://art/sprout lands basic/Tilesets/Wooden_House_Walls_Tilset.png" id="4_82yj6"]
@@ -161,7 +161,7 @@ remote_path = NodePath("../../move_instruction")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(120, 77)
 
-[node name="npc_cow" parent="." instance=ExtResource("7_mpxw5")]
+[node name="npc_alien" parent="." instance=ExtResource("7_mpxw5")]
 position = Vector2(-31, 177)
 
 [node name="apple" parent="." instance=ExtResource("9_a2apk")]

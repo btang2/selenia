@@ -6,6 +6,8 @@ var collected = false
 func _ready():
 	player_in_zone = false
 	$f.visible = false
+	if (!self.visible):
+		queue_free()
 	
 
 func _process(delta: float) -> void:

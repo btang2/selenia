@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cg0b7sdi80pfr"]
+[gd_scene load_steps=25 format=3 uid="uid://cg0b7sdi80pfr"]
 
 [ext_resource type="Script" path="res://characters/npc_trader.gd" id="1_dswqf"]
 [ext_resource type="Texture2D" uid="uid://bqpla7ora6ong" path="res://art/character assets/mushroom_combined.png" id="2_k2jyq"]
@@ -121,6 +121,15 @@ region = Rect2(0, 0, 32, 32)
 [sub_resource type="CircleShape2D" id="CircleShape2D_t6ref"]
 radius = 50.0
 
+[sub_resource type="Gradient" id="Gradient_k6ewo"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xe2wi"]
+gradient = SubResource("Gradient_k6ewo")
+fill = 1
+fill_from = Vector2(0.504274, 0.508547)
+fill_to = Vector2(0.884615, 0.145299)
+
 [node name="npc_trader" type="CharacterBody2D"]
 script = ExtResource("1_dswqf")
 
@@ -213,6 +222,11 @@ visible = false
 position = Vector2(50, -15)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_dw85i")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.5
+texture = SubResource("GradientTexture2D_xe2wi")
+texture_scale = 0.5
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="chat_detection" to="." method="_on_chat_detection_body_entered"]

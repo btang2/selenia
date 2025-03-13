@@ -18,6 +18,7 @@ func _on_mine_minigame_activated() -> void:
 	$PlayerCat/PointLight2D.visible = false
 	$inventory_gui.visible = false
 	$quest_progress_bar.visible = false
+	
 
 
 

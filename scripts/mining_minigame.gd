@@ -14,6 +14,12 @@ func _ready() -> void:
 		Global.mining_cooldown = 0.01
 		Global.ore_prob = 0.25
 		$MiningGame/PanelContainer/MiningTiles/CanvasModulate.visible = false
+	if (Global.quest_number > 1):
+		#a couple perks
+		$MinerCat/light.texture_scale = 1.6
+	else:
+		$MinerCat/light.texture_scale = 1.0
+		
 	#set up mining gametiles (in ore_tileset), hard-coded for now :(
 	#TL corner is (3,2), BR corner is (26,14), player start is (15,8)
 	
@@ -45,6 +51,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	$ore_label.text = ": " + str(Global.ore_mined)
 	cur_rot = $MinerCat/RayCast2D.global_rotation_degrees
+	#if ($MinerCat/RayCast2D.is_colliding() && (t - floor(t)) <= 0.25):
+	#	print($MinerCat/RayCast2D.get_collider())
 	if ($MinerCat/RayCast2D.is_colliding() && $MinerCat/RayCast2D.get_collider() == ore_tileset):
 		#make sure colliding with stone/ore
 		t += 3*delta

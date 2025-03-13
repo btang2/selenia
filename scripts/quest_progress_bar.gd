@@ -54,7 +54,31 @@ func update():
 			$start_sprite.texture = preload("res://resources/metalore.tres").texture
 			$end_sprite.texture = preload("res://resources/metalscrap.tres").texture
 			$quest_progress.value = 100*min(Global.search_inv("res://resources/metalscrap.tres"), 2) / 2.0
+	elif (Global.quest_number == 2):
+		if (Global.stored_quest_num != Global.quest_number):
+			$start_sprite.visible = true
+			$end_sprite.visible = true
+			$npc_icon_sprite.visible = false
 			
+			Global.stored_quest_num = Global.quest_number
+			Global.quest_part = 1
+		#less guidance, as further on in game
+		if (Global.portal_12_active == false):
+			$start_sprite.texture = preload("res://resources/redportalkey.tres").texture
+		else:
+			$start_sprite.texture = preload("res://resources/metalore.tres").texture
+		$end_sprite.texture = preload("res://resources/fullfueltank.tres").texture
+		
+		var fulltanks = Global.search_inv("res://resources/fullfueltank.tres")
+		var emptytanks = Global.search_inv("res://resources/emptyfueltank.tres")
+		var scraps = Global.search_inv("res://resources/metalscrap.tres")
+		
+		if (fulltanks > 0):
+			$quest_progress.value = 60 + 40*min(fulltanks, 3) / 3.0
+		elif (emptytanks > 0):
+			$quest_progress.value = 30 + 30*min(emptytanks, 3) / 3.0
+		else:
+			$quest_progress.value = 30*min(scraps, 6) / 6.0
 	else:
 		$quest_progress.value = 0
 		$start_sprite.visible = false

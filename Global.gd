@@ -24,12 +24,17 @@ var portal_67_active = false
 
 var time = 0 #start out midnight
 
+#mine (island 1)
 var ore_mined = 0 #global variable for mining minigame
 var mining_cooldown = 0.25 #for mining (default 0.25), ideally exchange ore for pickaxe to reduce this
 var ore_prob = 0.05 #probability a given stone block is actually ore (for generating map)
-#expected = 24*13*ore_prob (=0.05) ~ expected ? ores per game
+#expected = 24*13*ore_prob (=0.05) ~ expected 15.6 ores per game
 
-var developer_mode = false #true == on (easy mode)
+#(island 2) should give compass that tracks these things (for island 345?)
+var fuelfill_active = false #needs 8 magicfruit
+var fuelfill_stage = 0 #needs to get to 3 to fill
+
+var developer_mode = true #true == on (easy mode)
 
 func search_inv(id: String):
 	#inv should be designed and maintained to have no duplicates

@@ -53,6 +53,8 @@ func getSpriteTexture(resource):
 		return preload("res://resources/metalore.tres").texture
 	elif (resource == "metalscrap"):
 		return preload("res://resources/metalscrap.tres").texture
+	elif (resource == "emptyfueltank"):
+		return preload("res://resources/emptyfueltank.tres").texture
 	else:
 		#harcode as needed
 		return preload("res://resources/purpleportalkey.tres").texture
@@ -89,6 +91,7 @@ func pick_new_state():
 
 func _process(_delta) -> void:
 	t += 3*_delta
+	$PointLight2D.energy = ((cos(Global.time) + 1.0) / 2.0) * 0.5
 	#TODO movement/switching state mechanic goes here -- this actually useful for wandering npc
 	
 	if (player_in_chat_zone && trade_possible && traderstate == TRADER_STATE.IDLE): 

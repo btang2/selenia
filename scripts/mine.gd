@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 		$mine_light.energy = ((cos(Global.time) + 1.0) / 2.0) * 0.2
 		$waiting_time.visible = false
 	
-	if (Input.is_action_just_pressed("enter_mine") && player_in_region && mining_minigame_active == false && !on_cooldown):
+	if (Input.is_action_just_pressed("enter_minigame") && player_in_region && mining_minigame_active == false && !on_cooldown):
 		emit_signal("minigame_activated")
 		mining_minigame_active = true
 		miningGame = preload("res://scenes/mining_minigame.tscn").instantiate()
@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 		on_cooldown = true
 		$Timer.start(1)
 		
-	elif (Input.is_action_just_pressed("enter_mine") && mining_minigame_active == true && !on_cooldown):
+	elif (Input.is_action_just_pressed("enter_minigame") && mining_minigame_active == true && !on_cooldown):
 		emit_signal("minigame_stopped")
 		mining_minigame_active = false
 		#handle ore gained in inventory
