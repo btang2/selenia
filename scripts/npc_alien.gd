@@ -75,6 +75,8 @@ func check_quest(dialogue_id: int):
 		return Global.search_inv("res://resources/metalscrap.tres") >= 2
 	elif (dialogue_id == 2):
 		return Global.search_inv("res://resources/fullfueltank.tres") >= 3
+	elif (dialogue_id == 3):
+		return Global.search_inv("res://resources/enginescrap.tres") >= 3
 	return false
 
 func fulfill_quest(dialogue_id: int):
@@ -88,8 +90,10 @@ func fulfill_quest(dialogue_id: int):
 		Global.add_inv("res://resources/redportalkey.tres", 1)
 	elif (dialogue_id == 2):
 		Global.remove_inv("res://resources/fullfueltank.tres", 3)
-		Global.add_inv("res://resources/purpleportalkey.tres", 1) #for islands?
-		
+		Global.add_inv("res://resources/blueportalkey.tres", 1) #for islands?
+	elif (dialogue_id == 3):
+		Global.remove_inv("res://resources/enginescrap.tres", 3)
+		Global.add_inv("res://resources/purpleportalkey.tres", 1) #for last island
 #search_inv, remove_inv, add_inv all global functions now
 
 	

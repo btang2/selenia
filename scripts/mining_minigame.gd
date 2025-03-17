@@ -16,7 +16,9 @@ func _ready() -> void:
 		$MiningGame/PanelContainer/MiningTiles/CanvasModulate.visible = false
 	if (Global.quest_number > 1):
 		#a couple perks
-		$MinerCat/light.texture_scale = 1.6
+		$MinerCat/light.texture_scale = 1.4
+		Global.mining_cooldown = Global.mining_cooldown * 0.9 #multiplier, stacking
+		Global.ore_prob = Global.ore_prob * 1.05 #multiplier, stacking
 	else:
 		$MinerCat/light.texture_scale = 1.0
 		

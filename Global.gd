@@ -20,7 +20,6 @@ var portal_24_active = false
 var portal_45_active = false
 
 var portal_26_active = false
-var portal_67_active = false
 
 var time = 0 #start out midnight
 
@@ -34,7 +33,38 @@ var ore_prob = 0.05 #probability a given stone block is actually ore (for genera
 var fuelfill_active = false #needs 8 magicfruit
 var fuelfill_stage = 0 #needs to get to 3 to fill
 
-var developer_mode = true #true == on (easy mode)
+#(island 3) store already collected items
+var island3_fruit1_collected = false
+var island3_fruit2_collected = false
+var island3_fruit3_collected = false
+var island3_enginescrap_collected = false
+var island3_npc_traded = false
+
+#(island 4)
+var island4_fruit1_collected = false
+var island4_fruit2_collected = false
+var island4_enginescrap_collected = false
+var island4_npc_traded = false
+
+#(island 5)
+var island5_fruit1_collected = false
+var island5_fruit2_collected = false
+var island5_fruit3_collected = false
+var island5_fruit4_collected = false
+var island5_fruit5_collected = false
+var island5_npc_traded = false
+
+#(island 6)
+var island6_fruit1_collected = false
+var island6_fruit2_collected = false
+var island6_fruit3_collected = false
+var island6_fruit4_collected = false
+var island6_fruit5_collected = false
+var island6_fruit6_collected = false
+
+#.get_bus_index("Master")
+#AudioServer.set_bus_mute(bus_idx, true)
+var developer_mode = false #true == on (easy mode)
 
 func search_inv(id: String):
 	#inv should be designed and maintained to have no duplicates

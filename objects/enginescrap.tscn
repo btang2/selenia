@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3vc7mrykrsyh"]
+
+[ext_resource type="Script" path="res://objects/enginescrap.gd" id="1_bvi80"]
+[ext_resource type="Texture2D" uid="uid://k8w1v3nv0mx7" path="res://art/item art/crafting_materials/resources_basic.png" id="1_byol6"]
+[ext_resource type="Texture2D" uid="uid://c5102tegcwsl4" path="res://art/keybord and controller icons/individual sprites/keyboard/F.png" id="2_p0thg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6i61g"]
+radius = 15.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wygr"]
+atlas = ExtResource("1_byol6")
+region = Rect2(0, 72, 24, 24)
+
+[node name="enginescrap" type="Area2D"]
+script = ExtResource("1_bvi80")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6i61g")
+
+[node name="scrap" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_3wygr")
+
+[node name="f" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -18)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_p0thg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

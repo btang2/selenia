@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://bepqvcbkowoej" path="res://resources/inventory_gui.tscn" id="16_bcwxw"]
 [ext_resource type="PackedScene" uid="uid://1tvis1kmyifw" path="res://objects/magicfruit.tscn" id="17_6vvmj"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iurvh"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aq8xu"]
 texture = ExtResource("2_k18ei")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -4.5625, 8, -4.1875, -4.125, 4.3125, -4.375, 3.8125, 8, 8, 8, 8, -8, -8, -8)
@@ -71,7 +71,7 @@ texture = ExtResource("2_k18ei")
 
 [sub_resource type="TileSet" id="TileSet_onppr"]
 physics_layer_0/collision_layer = 1
-sources/1 = SubResource("TileSetAtlasSource_iurvh")
+sources/1 = SubResource("TileSetAtlasSource_aq8xu")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vru0v"]
 texture = ExtResource("4_82yj6")

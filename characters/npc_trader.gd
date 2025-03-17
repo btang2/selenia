@@ -35,6 +35,8 @@ var move_direction = Vector2(0,0)
 var trade_possible = true
 var traderstate = TRADER_STATE.IDLE #to be implemented very soon
 
+signal unique_trade_completed
+
 func _ready():
 	player_in_chat_zone = false
 	$speech_bubble.visible = false
@@ -55,6 +57,16 @@ func getSpriteTexture(resource):
 		return preload("res://resources/metalscrap.tres").texture
 	elif (resource == "emptyfueltank"):
 		return preload("res://resources/emptyfueltank.tres").texture
+	elif (resource == "islandfruit"):
+		return preload("res://resources/islandfruit.tres").texture
+	elif (resource == "enginescrap"):
+		return preload("res://resources/enginescrap.tres").texture
+	elif (resource == "blueportalkey"):
+		return preload("res://resources/blueportalkey.tres").texture
+	elif (resource == "solarpanelbroken"):
+		return preload("res://resources/solarpanelbroken.tres").texture
+	elif (resource == "solarpanelscrap"):
+		return preload("res://resources/solarpanelscrap.tres").texture
 	else:
 		#harcode as needed
 		return preload("res://resources/purpleportalkey.tres").texture
@@ -130,6 +142,7 @@ func _process(_delta) -> void:
 			if (!trade_repeatable):
 				trade_possible = false
 				$speech_bubble.visible = false
+				emit_signal("unique_trade_completed")
 			else:
 				equal_key.visible = Global.search_inv("res://resources/" + input_resource + ".tres") >= input_resource_quantity
 	#elif (!player_in_chat_zone):

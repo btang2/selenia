@@ -79,6 +79,22 @@ func update():
 			$quest_progress.value = 30 + 30*min(emptytanks, 3) / 3.0
 		else:
 			$quest_progress.value = 30*min(scraps, 6) / 6.0
+	elif (Global.quest_number == 3):
+		if (Global.stored_quest_num != Global.quest_number):
+			$start_sprite.visible = true
+			$end_sprite.visible = true
+			$npc_icon_sprite.visible = false
+			
+			Global.stored_quest_num = Global.quest_number
+			Global.quest_part = 1
+		if (Global.portal_23_active == false && Global.portal_24_active == false):
+			$start_sprite.texture = preload("res://resources/blueportalkey.tres").texture
+		else:
+			$start_sprite.texture = preload("res://resources/islandfruit.tres").texture
+		$end_sprite.texture = preload("res://resources/enginescrap.tres").texture
+		
+		$quest_progress.value = 100 * min(Global.search_inv("res://resources/enginescrap.tres"), 3) / 3.0
+		
 	else:
 		$quest_progress.value = 0
 		$start_sprite.visible = false

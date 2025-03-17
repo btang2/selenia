@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://b4144hvka24yj"]
+
+[ext_resource type="Script" path="res://resources/itemdata.gd" id="1_aw7vk"]
+[ext_resource type="Texture2D" uid="uid://bwe4mv5mej3p4" path="res://art/tilesets/solarpanel.png" id="2_1iu7e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkgqs"]
+atlas = ExtResource("2_1iu7e")
+region = Rect2(16, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_aw7vk")
+type = 1
+name = "solarpanelbroken"
+texture = SubResource("AtlasTexture_mkgqs")

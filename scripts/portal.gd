@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 	
 	if (portal_active && player_in_portal):
 		#self modulate to show portal on
-		var brightness =  1 - sin(PI / 2 * timer.time_left / 1.5) #is fade out or in cooler?
+		var brightness =  1 - sin(PI / 2 * timer.time_left / 2.5) #is fade out or in cooler?
 		$Sprite2D.self_modulate = Color(0.2 + 0.8*brightness, 0.2 + 0.8*brightness, 0.2 + 0.8*brightness)
 	#elif (portal_active):
 	#	$Sprite2D.self_modulate = Color(0.8, 0.8, 0.8)
@@ -63,8 +63,6 @@ func _process(delta: float) -> void:
 				Global.portal_45_active = true
 			elif (from == "island_2" && to == "island_6"):
 				Global.portal_26_active = true
-			elif (from == "island_2" && to == "island_7"):
-				Global.portal_27_active = true
 			Global.remove_inv("res://resources/" + color + "portalkey.tres", 1)
 			$PointLight2D.visible = true
 			$AnimationPlayer.play(color)
@@ -73,7 +71,7 @@ func _process(delta: float) -> void:
 				if (Global.developer_mode):
 					timer.start(0.5)
 				else:
-					timer.start(1.5)
+					timer.start(2.5)
 			
 
 func _on_body_entered(body: Node2D) -> void:
@@ -84,7 +82,7 @@ func _on_body_entered(body: Node2D) -> void:
 			if (Global.developer_mode):
 				timer.start(0.5)
 			else:
-				timer.start(1.5)
+				timer.start(2.5)
 			#timer.start(2) #arbitrary atm, ideally start a global "fade out" type transition
 		else:
 			#check if player has resource
@@ -106,6 +104,7 @@ func _on_timer_timeout() -> void:
 	Global.from_id = from #for each scene shoudld load different pos depending on where from
 	#var instance = new_scn.instantiate()
 	#add_child(instance)
+	print("from " + from + " to " + to)
 	get_tree().change_scene_to_file(new_scn)
 	#lastly, set position to last player position of prev scene, shifted down? not sure how to do
 		

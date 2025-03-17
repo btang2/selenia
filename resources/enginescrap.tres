@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://bpgm5sw0lm31o"]
+
+[ext_resource type="Script" path="res://resources/itemdata.gd" id="1_hqaab"]
+[ext_resource type="Texture2D" uid="uid://k8w1v3nv0mx7" path="res://art/item art/crafting_materials/resources_basic.png" id="2_pmwg7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3ydt"]
+atlas = ExtResource("2_pmwg7")
+region = Rect2(0, 72, 24, 24)
+
+[resource]
+script = ExtResource("1_hqaab")
+type = 1
+name = "enginescrap"
+texture = SubResource("AtlasTexture_b3ydt")

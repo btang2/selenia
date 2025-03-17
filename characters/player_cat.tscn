@@ -321,6 +321,7 @@ parameters/Idle/blend_position = Vector2(-0.00174218, 1.05259)
 parameters/Walk/blend_position = Vector2(0, 0.948276)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visibility_layer = 3
 scale = Vector2(3, 2.802)
 energy = 0.8
 texture = SubResource("GradientTexture2D_uqqel")

@@ -16,7 +16,7 @@ region = Rect2(16, 16, 16, 16)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w4flc"]
 texture = ExtResource("1_7a0dv")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nfmkv"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ita05"]
 texture = ExtResource("4_7bxpi")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -4.5625, 8, -4.1875, -4.125, 4.3125, -4.375, 3.8125, 8, 8, 8, 8, -8, -8, -8)
@@ -70,9 +70,9 @@ texture = ExtResource("4_7bxpi")
 [sub_resource type="TileSet" id="TileSet_flw0h"]
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 2
-sources/1 = SubResource("TileSetAtlasSource_nfmkv")
+sources/1 = SubResource("TileSetAtlasSource_ita05")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qxi8r"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8s2nl"]
 texture = ExtResource("5_5nx7y")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -108,7 +108,7 @@ physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 2
 custom_data_layer_0/name = "break_status"
 custom_data_layer_0/type = 2
-sources/1 = SubResource("TileSetAtlasSource_qxi8r")
+sources/1 = SubResource("TileSetAtlasSource_8s2nl")
 
 [sub_resource type="Gradient" id="Gradient_mv1ch"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)

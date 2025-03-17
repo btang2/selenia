@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://dkolccknpq3yt"]
+
+[ext_resource type="Script" path="res://resources/itemdata.gd" id="1_lbp14"]
+[ext_resource type="Texture2D" uid="uid://blnt028txtvem" path="res://art/item art/fruits.png" id="2_d3o7v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyff0"]
+atlas = ExtResource("2_d3o7v")
+region = Rect2(32, 64, 16, 16)
+
+[resource]
+script = ExtResource("1_lbp14")
+type = 4
+name = "islandfruit"
+texture = SubResource("AtlasTexture_xyff0")

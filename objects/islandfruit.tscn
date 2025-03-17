@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxq6k4ycibduq"]
+
+[ext_resource type="Script" path="res://objects/islandfruit.gd" id="1_qxh8k"]
+[ext_resource type="Texture2D" uid="uid://blnt028txtvem" path="res://art/item art/fruits.png" id="1_ubkhs"]
+[ext_resource type="Texture2D" uid="uid://c5102tegcwsl4" path="res://art/keybord and controller icons/individual sprites/keyboard/F.png" id="2_wq3kp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgq5e"]
+atlas = ExtResource("1_ubkhs")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ft7rx"]
+radius = 15.0
+
+[node name="islandfruit" type="Area2D"]
+script = ExtResource("1_qxh8k")
+
+[node name="fruit" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_xgq5e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ft7rx")
+
+[node name="f" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -18)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_wq3kp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
