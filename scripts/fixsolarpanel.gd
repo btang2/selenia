@@ -9,7 +9,7 @@ var solarpanel_minigame_active = false
 var on_cooldown = false
 var solarpanelGame
 var hasItems = false
-var num_emptytank = 0
+var num_brokensolar = 0
 
 
 #BUGGED -- still fuelfill instead of solar panel
@@ -54,6 +54,7 @@ func _process(delta: float) -> void:
 			$chatbox.visible = false
 			$equals_key.visible = false
 			$c_key.visible = true
+			player_chatting = false
 			$Timer.start(0.5)
 		
 		if (Input.is_action_just_pressed("fulfill_quest") && player_in_region && hasItems):
@@ -72,12 +73,12 @@ func _process(delta: float) -> void:
 		if (Input.is_action_just_pressed("enter_minigame") && player_in_region && solarpanel_minigame_active == false && !on_cooldown):
 			
 			#only activate if have >1 emptyfueltank
-			num_emptytank = Global.search_inv("res://resources/emptyfueltank.tres")
-			if (num_emptytank > 0):
+			num_brokensolar = Global.search_inv("res://resources/solarpanelbroken.tres")
+			if (num_brokensolar > 0):
 				$chatbox.visible = false
 				emit_signal("minigame_activated")
 				solarpanel_minigame_active = true
-				solarpanelGame = preload("res://scenes/fuelfill_minigame.tscn").instantiate()#swap
+				solarpanelGame = preload("res://scenes/solarpanelminigame.tscn").instantiate()#swap
 				get_tree().current_scene.add_child(solarpanelGame)
 				solarpanelGame.gameOver.connect(_on_game_over)
 				
@@ -92,7 +93,7 @@ func _process(delta: float) -> void:
 		elif (Input.is_action_just_pressed("enter_minigame") && solarpanel_minigame_active == true && !on_cooldown):
 			emit_signal("minigame_stopped")
 			solarpanel_minigame_active = false
-			if (Global.fuelfill_stage == 4):
+			if (Global.solarpanel_stage == 4):
 				if (Global.search_inv("res://resources/solarpanelbroken.tres") > 0):
 					Global.remove_inv("res://resources/solarpanelbroken.tres", 1)
 					Global.add_inv("res://resources/solarpanel.tres", 1)
@@ -114,10 +115,10 @@ func _process(delta: float) -> void:
 func _on_game_over():
 	emit_signal("minigame_stopped")
 	solarpanel_minigame_active = false
-	if (Global.fuelfill_stage == 4):
-		if (Global.search_inv("res://resources/emptyfueltank.tres") > 0):
-			Global.remove_inv("res://resources/emptyfueltank.tres", 1)
-			Global.add_inv("res://resources/fullfueltank.tres", 1)
+	if (Global.solarpanel_stage == 4):
+		if (Global.search_inv("res://resources/solarpanelbroken.tres") > 0):
+			Global.remove_inv("res://resources/solarpanelbroken.tres", 1)
+			Global.add_inv("res://resources/solarpanel.tres", 1)
 	#TODO as well
 	solarpanelGame.queue_free()
 	

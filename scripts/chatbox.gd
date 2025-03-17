@@ -20,6 +20,8 @@ func getSpriteTexture():
 		return preload("res://resources/fullfueltank.tres").texture #placeholder
 	elif (Global.quest_number == 3):
 		return preload("res://resources/enginescrap.tres").texture
+	elif (Global.quest_number == 4):
+		return preload("res://resources/solarpanel.tres").texture
 	else:
 		return preload("res://resources/purpleportalkey.tres").texture
 func start():

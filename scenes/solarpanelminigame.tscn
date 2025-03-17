@@ -1,0 +1,290 @@
+[gd_scene load_steps=22 format=4 uid="uid://61fo0pjt6jia"]
+
+[ext_resource type="Texture2D" uid="uid://4t58p5wmf3xg" path="res://art/tilesets/minigame_window.png" id="1_ahobo"]
+[ext_resource type="Texture2D" uid="uid://ca3i6mi0omyy4" path="res://art/tilesets/selenia_ground.png" id="2_rlrtx"]
+[ext_resource type="Texture2D" uid="uid://ck7tu6rfv2h3x" path="res://art/tilesets/solarpanel.png" id="3_wgwls"]
+[ext_resource type="Texture2D" uid="uid://y5s6ijaeafgd" path="res://art/keybord and controller icons/individual sprites/keyboard/Right Arrow.png" id="4_7yitv"]
+[ext_resource type="Texture2D" uid="uid://bf2sd2x0bis6i" path="res://art/keybord and controller icons/individual sprites/keyboard/1.png" id="6_jpld3"]
+[ext_resource type="Texture2D" uid="uid://q65rb1o0nj7y" path="res://art/keybord and controller icons/individual sprites/controller/controller button 55.png" id="7_meudt"]
+[ext_resource type="Texture2D" uid="uid://du1xjpqa84i6c" path="res://art/keybord and controller icons/individual sprites/keyboard/2.png" id="7_t0gal"]
+[ext_resource type="Texture2D" uid="uid://c1s8ssrxgqfty" path="res://art/keybord and controller icons/individual sprites/keyboard/3.png" id="8_a4try"]
+[ext_resource type="Texture2D" uid="uid://dansjm4ojc0ay" path="res://art/keybord and controller icons/individual sprites/keyboard/4.png" id="9_503rr"]
+[ext_resource type="Texture2D" uid="uid://dl7vh2udhfx10" path="res://art/keybord and controller icons/individual sprites/keyboard/5.png" id="10_ekjin"]
+[ext_resource type="Texture2D" uid="uid://cysnoh30ajq8o" path="res://art/keybord and controller icons/individual sprites/keyboard/6.png" id="11_yrh4q"]
+[ext_resource type="Texture2D" uid="uid://cflv6ern6fmer" path="res://art/keybord and controller icons/individual sprites/keyboard/7.png" id="12_3tiyt"]
+[ext_resource type="Texture2D" uid="uid://cb0r51y8g1gmp" path="res://art/keybord and controller icons/individual sprites/keyboard/8.png" id="13_hxfnc"]
+[ext_resource type="Texture2D" uid="uid://cdjknxoilpnbt" path="res://art/keybord and controller icons/individual sprites/keyboard/9.png" id="14_xwasy"]
+[ext_resource type="Texture2D" uid="uid://dnjiterejibou" path="res://art/keybord and controller icons/individual sprites/keyboard/O.png" id="15_1t7v2"]
+[ext_resource type="Texture2D" uid="uid://b2f3tud82ufu3" path="res://art/keybord and controller icons/individual sprites/controller/controller button 27.png" id="16_jis1j"]
+[ext_resource type="Texture2D" uid="uid://bynk1yo8tqrld" path="res://art/keybord and controller icons/individual sprites/controller/controller button 26.png" id="17_cbn4a"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t440s"]
+texture = ExtResource("1_ahobo")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vu72a"]
+texture = ExtResource("2_rlrtx")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -4.5625, 8, -4.1875, -4.125, 4.3125, -4.375, 3.8125, 8, 8, 8, 8, -8, -8, -8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, -4.125, -4.375, -4.125, -4.75, 8, -8, 8, -8, -8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, -4.125, -8, -4.4375, -8, -8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, 4.125, 8, 4.125, -4.375, -8, -4.75, -8, -8, 8, -8)
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.375, -8, -8, -8, -8, 8, -4.25, 8)
+0:1/0/physics_layer_0/polygon_1/points = PackedVector2Array(3.875, -8, 8, -8, 8, 8, 3.875, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -4.125, -8, -3.75, 8, -8, 8)
+2:1/0 = 0
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, 3.4375, 8, 3.9375, -8, 8, -8)
+4:1/0 = 0
+5:1/0 = 0
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -4.5625, -8, -4.4375, 4.5, 4.3125, 4.375, 3.8125, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -4.125, -8, -4.125, 4.375, 8, 4.75, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, 4.125, 8, 3.75, 8, 8)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, 4.125, 4.375, 4.125, 4.75, -8, 8, -8, 8, 8)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 8, -8, 8, -8, -8)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 8, -8, 8, -8, -8)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.5625, -8, -8, -8, -8, 8, -3.9375, 8)
+0:3/0/physics_layer_0/polygon_1/points = PackedVector2Array(3.875, -8, 8, -8, 8, 8, 3.875, 8)
+0:3/0/physics_layer_0/polygon_2/points = PackedVector2Array(-3.4375, -6.375, 3.5625, -6.5, 3.4375, -8, -3.8125, -8)
+0:3/0/physics_layer_0/polygon_3/points = PackedVector2Array(3.8125, 5.125, 3.4375, 8, -3.3125, 8, -3.6875, 5.25)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, -4.5625, -4.5, -4.4375, -4.375, 4.3125, 8, 3.8125, 8, 8, -8, 8, -8, -8)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 4.375, -8, 8, 8, 8, 8, 4.25)
+2:3/0/physics_layer_0/polygon_1/points = PackedVector2Array(-8, -3.875, -8, -8, 8, -8, 8, -3.875)
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, -4.5625, 4.5, -4.4375, 4.375, 4.3125, -8, 4.375, -8, 8, 8, 8, 8, -8)
+4:3/0 = 0
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 8, -8, 8, -8, -8)
+5:3/0 = 0
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 8, -8, 8, -8, -8)
+
+[sub_resource type="TileSet" id="TileSet_21oty"]
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 2
+sources/1 = SubResource("TileSetAtlasSource_vu72a")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5eq4a"]
+size = Vector2(23, 26)
+
+[node name="solarpanelminigame" type="CanvasLayer"]
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="waiting_time" type="Label" parent="."]
+modulate = Color(1, 0.2, 0.2, 1)
+anchors_preset = -1
+anchor_top = 0.0166667
+anchor_right = -0.230208
+anchor_bottom = 0.0166667
+offset_left = 120.0
+offset_top = 107.0
+offset_right = 587.0
+offset_bottom = 132.0
+text = "80"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="SolarGame" type="PanelContainer" parent="."]
+z_index = -1
+offset_left = 5.0
+offset_top = 9.0
+offset_right = 476.0
+offset_bottom = 265.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_t440s")
+metadata/_edit_use_anchors_ = true
+
+[node name="ground" type="TileMapLayer" parent="SolarGame"]
+modulate = Color(0.641934, 0.641934, 0.641934, 1)
+z_index = -3
+position = Vector2(-5, -8)
+tile_map_data = PackedByteArray("AAADAAIAAQACAAEAAAAEAAIAAQACAAEAAAAEAAMAAQACAAEAAAAFAAMAAQACAAEAAAAGAAQAAQACAAEAAAAHAAUAAQACAAEAAAAIAAYAAQACAAEAAAAJAAYAAQACAAEAAAAJAAcAAQACAAEAAAAKAAcAAQACAAEAAAALAAcAAQACAAEAAAALAAgAAQACAAEAAAAMAAgAAQACAAEAAAAMAAkAAQACAAEAAAANAAkAAQACAAEAAAAOAAkAAQACAAEAAAAOAAoAAQACAAEAAAAPAAoAAQACAAEAAAAQAAoAAQACAAEAAAAQAAsAAQACAAEAAAARAAsAAQACAAEAAAASAAsAAQACAAEAAAATAAsAAQACAAEAAAATAAwAAQACAAEAAAAUAAwAAQACAAEAAAAVAAwAAQACAAEAAAAVAA0AAQACAAEAAAAWAA0AAQACAAEAAAADAAMAAQACAAEAAAADAAQAAQACAAEAAAADAAUAAQACAAEAAAADAAYAAQACAAEAAAADAAcAAQACAAEAAAADAAgAAQACAAEAAAADAAkAAQACAAEAAAADAAoAAQACAAEAAAADAAsAAQACAAEAAAADAAwAAQACAAEAAAADAA0AAQACAAEAAAADAA4AAQACAAEAAAAEAA4AAQACAAEAAAAFAA4AAQACAAEAAAAGAA4AAQACAAEAAAAHAA4AAQACAAEAAAAIAA4AAQACAAEAAAAJAA4AAQACAAEAAAAKAA4AAQACAAEAAAALAA4AAQACAAEAAAAMAA4AAQACAAEAAAANAA4AAQACAAEAAAAOAA4AAQACAAEAAAAPAA4AAQACAAEAAAAQAA4AAQACAAEAAAARAA4AAQACAAEAAAASAA4AAQACAAEAAAATAA4AAQACAAEAAAAUAA4AAQACAAEAAAAVAA4AAQACAAEAAAAWAA4AAQACAAEAAAAXAA4AAQACAAEAAAAYAA4AAQACAAEAAAAZAA4AAQACAAEAAAAaAA4AAQACAAEAAAAaAA0AAQACAAEAAAAaAAwAAQACAAEAAAAaAAsAAQACAAEAAAAaAAoAAQACAAEAAAAaAAkAAQACAAEAAAAaAAgAAQACAAEAAAAaAAcAAQACAAEAAAAaAAYAAQACAAEAAAAaAAUAAQACAAEAAAAaAAQAAQACAAEAAAAaAAMAAQACAAEAAAAaAAIAAQACAAEAAAAZAAIAAQACAAEAAAAYAAIAAQACAAEAAAAXAAIAAQACAAEAAAAWAAIAAQACAAEAAAAVAAIAAQACAAEAAAAUAAIAAQACAAEAAAATAAIAAQACAAEAAAASAAIAAQACAAEAAAARAAIAAQACAAEAAAAQAAIAAQACAAEAAAAPAAIAAQACAAEAAAAOAAIAAQACAAEAAAANAAIAAQACAAEAAAAMAAIAAQACAAEAAAALAAIAAQACAAEAAAAKAAIAAQACAAEAAAAJAAIAAQACAAEAAAAIAAIAAQACAAEAAAAHAAIAAQACAAEAAAAGAAIAAQACAAEAAAAFAAIAAQACAAEAAAAGAAMAAQACAAEAAAAHAAMAAQACAAEAAAAIAAMAAQACAAEAAAAHAAQAAQACAAEAAAAIAAQAAQACAAEAAAAIAAUAAQACAAEAAAAJAAQAAQACAAEAAAAJAAMAAQACAAEAAAAJAAUAAQACAAEAAAAKAAYAAQACAAEAAAAKAAUAAQACAAEAAAAKAAQAAQACAAEAAAAKAAMAAQACAAEAAAALAAMAAQACAAEAAAALAAQAAQACAAEAAAALAAUAAQACAAEAAAALAAYAAQACAAEAAAAMAAYAAQACAAEAAAAMAAUAAQACAAEAAAAMAAQAAQACAAEAAAAMAAMAAQACAAEAAAAMAAcAAQACAAEAAAANAAcAAQACAAEAAAANAAYAAQACAAEAAAANAAUAAQACAAEAAAANAAQAAQACAAEAAAANAAMAAQACAAEAAAAOAAUAAQACAAEAAAAOAAYAAQACAAEAAAAOAAcAAQACAAEAAAAOAAgAAQACAAEAAAAPAAgAAQACAAEAAAANAAgAAQACAAEAAAAOAAQAAQACAAEAAAAOAAMAAQACAAEAAAAPAAMAAQACAAEAAAAPAAQAAQACAAEAAAAPAAUAAQACAAEAAAAPAAYAAQACAAEAAAAPAAcAAQACAAEAAAAQAAkAAQACAAEAAAAQAAgAAQACAAEAAAAQAAcAAQACAAEAAAAQAAYAAQACAAEAAAAQAAUAAQACAAEAAAAQAAQAAQACAAEAAAAQAAMAAQACAAEAAAARAAMAAQACAAEAAAARAAQAAQACAAEAAAARAAUAAQACAAEAAAARAAYAAQACAAEAAAARAAcAAQACAAEAAAARAAgAAQACAAEAAAARAAkAAQACAAEAAAARAAoAAQACAAEAAAASAAoAAQACAAEAAAASAAkAAQACAAEAAAASAAgAAQACAAEAAAASAAcAAQACAAEAAAASAAYAAQACAAEAAAASAAUAAQACAAEAAAASAAQAAQACAAEAAAASAAMAAQACAAEAAAATAAMAAQACAAEAAAATAAQAAQACAAEAAAATAAUAAQACAAEAAAATAAYAAQACAAEAAAATAAcAAQACAAEAAAATAAgAAQACAAEAAAATAAkAAQACAAEAAAAUAAkAAQACAAEAAAAUAAoAAQACAAEAAAATAAoAAQACAAEAAAAUAAsAAQACAAEAAAAVAAsAAQACAAEAAAAWAAsAAQACAAEAAAAXAAsAAQACAAEAAAAXAAwAAQACAAEAAAAYAAwAAQACAAEAAAAXAA0AAQACAAEAAAAWAAwAAQACAAEAAAAYAA0AAQACAAEAAAAZAA0AAQACAAEAAAAZAAwAAQACAAEAAAAZAAsAAQACAAEAAAAZAAoAAQACAAEAAAAZAAkAAQACAAEAAAAZAAgAAQACAAEAAAAZAAcAAQACAAEAAAAZAAYAAQACAAEAAAAZAAUAAQACAAEAAAAZAAQAAQACAAEAAAAZAAMAAQACAAEAAAAYAAMAAQACAAEAAAAYAAQAAQACAAEAAAAYAAUAAQACAAEAAAAYAAYAAQACAAEAAAAYAAcAAQACAAEAAAAYAAgAAQACAAEAAAAYAAkAAQACAAEAAAAYAAoAAQACAAEAAAAYAAsAAQACAAEAAAAXAAoAAQACAAEAAAAXAAkAAQACAAEAAAAXAAgAAQACAAEAAAAXAAcAAQACAAEAAAAXAAYAAQACAAEAAAAXAAUAAQACAAEAAAAXAAQAAQACAAEAAAAXAAMAAQACAAEAAAAWAAMAAQACAAEAAAAWAAQAAQACAAEAAAAWAAUAAQACAAEAAAAWAAYAAQACAAEAAAAWAAcAAQACAAEAAAAWAAgAAQACAAEAAAAWAAkAAQACAAEAAAAWAAoAAQACAAEAAAAVAAQAAQACAAEAAAAVAAMAAQACAAEAAAAVAAUAAQACAAEAAAAVAAYAAQACAAEAAAAVAAcAAQACAAEAAAAVAAgAAQACAAEAAAAVAAkAAQACAAEAAAAVAAoAAQACAAEAAAAUAAcAAQACAAEAAAAUAAYAAQACAAEAAAAUAAUAAQACAAEAAAAUAAQAAQACAAEAAAAUAAMAAQACAAEAAAAUAAgAAQACAAEAAAAUAA0AAQACAAEAAAATAA0AAQACAAEAAAASAA0AAQACAAEAAAASAAwAAQACAAEAAAARAA0AAQACAAEAAAARAAwAAQACAAEAAAAQAAwAAQACAAEAAAAQAA0AAQACAAEAAAAPAA0AAQACAAEAAAAPAAwAAQACAAEAAAAPAAsAAQACAAEAAAAOAAwAAQACAAEAAAAOAA0AAQACAAEAAAAOAAsAAQACAAEAAAANAAoAAQACAAEAAAANAAsAAQACAAEAAAANAAwAAQACAAEAAAANAA0AAQACAAEAAAAMAAoAAQACAAEAAAAMAAsAAQACAAEAAAAMAAwAAQACAAEAAAAMAA0AAQACAAEAAAALAA0AAQACAAEAAAALAAwAAQACAAEAAAALAAsAAQACAAEAAAALAAoAAQACAAEAAAALAAkAAQACAAEAAAAKAA0AAQACAAEAAAAKAAwAAQACAAEAAAAKAAsAAQACAAEAAAAKAAoAAQACAAEAAAAKAAkAAQACAAEAAAAKAAgAAQACAAEAAAAJAAgAAQACAAEAAAAJAAkAAQACAAEAAAAJAAoAAQACAAEAAAAJAAsAAQACAAEAAAAJAAwAAQACAAEAAAAJAA0AAQACAAEAAAAIAA0AAQACAAEAAAAIAAwAAQACAAEAAAAIAAsAAQACAAEAAAAIAAoAAQACAAEAAAAIAAkAAQACAAEAAAAIAAgAAQACAAEAAAAIAAcAAQACAAEAAAAHAAYAAQACAAEAAAAHAAcAAQACAAEAAAAHAAgAAQACAAEAAAAHAAkAAQACAAEAAAAHAAoAAQACAAEAAAAHAAsAAQACAAEAAAAHAAwAAQACAAEAAAAHAA0AAQACAAEAAAAGAA0AAQACAAEAAAAGAAwAAQACAAEAAAAGAAsAAQACAAEAAAAGAAoAAQACAAEAAAAGAAkAAQACAAEAAAAGAAgAAQACAAEAAAAGAAcAAQACAAEAAAAGAAYAAQACAAEAAAAGAAUAAQACAAEAAAAFAAQAAQACAAEAAAAFAAUAAQACAAEAAAAFAAYAAQACAAEAAAAFAAcAAQACAAEAAAAFAAwAAQACAAEAAAAFAA0AAQACAAEAAAAFAAsAAQACAAEAAAAFAAoAAQACAAEAAAAFAAkAAQACAAEAAAAFAAgAAQACAAEAAAAEAAwAAQACAAEAAAAEAA0AAQACAAEAAAAEAAsAAQACAAEAAAAEAAoAAQACAAEAAAAEAAkAAQACAAEAAAAEAAgAAQACAAEAAAAEAAcAAQACAAEAAAAEAAYAAQACAAEAAAAEAAUAAQACAAEAAAAEAAQAAQACAAEAAAABAA0AAQAEAAMAAAABAA4AAQAEAAIAAAACAA0AAQAFAAMAAAACAA4AAQAFAAIAAAABAAsAAQAEAAMAAAABAAwAAQAEAAIAAAACAAsAAQAFAAMAAAACAAwAAQAFAAIAAAABAAkAAQAEAAMAAAABAAoAAQAEAAIAAAACAAkAAQAFAAMAAAACAAoAAQAFAAIAAAABAAcAAQAEAAMAAAABAAgAAQAEAAIAAAACAAcAAQAFAAMAAAACAAgAAQAFAAIAAAABAAUAAQAEAAMAAAABAAYAAQAEAAIAAAACAAUAAQAFAAMAAAACAAYAAQAFAAIAAAABAAMAAQAEAAMAAAABAAQAAQAEAAIAAAACAAMAAQAFAAMAAAACAAQAAQAFAAIAAAABAAIAAQAEAAIAAAACAAEAAQAEAAIAAAACAAIAAQAFAAIAAAADAAEAAQAFAAIAAAAEAAEAAQAEAAIAAAAFAAEAAQAFAAIAAAAGAAEAAQAEAAIAAAAHAAEAAQAFAAIAAAAIAAEAAQAEAAIAAAAJAAEAAQAFAAIAAAAKAAEAAQAEAAIAAAALAAEAAQAFAAIAAAAMAAEAAQAEAAIAAAANAAEAAQAFAAIAAAAOAAEAAQAEAAIAAAAPAAEAAQAFAAIAAAAQAAEAAQAEAAIAAAARAAEAAQAFAAIAAAASAAEAAQAEAAIAAAATAAEAAQAFAAIAAAAUAAEAAQAEAAIAAAAVAAEAAQAFAAIAAAAWAAEAAQAEAAIAAAAXAAEAAQAFAAIAAAAYAAEAAQAEAAIAAAAZAAEAAQAFAAIAAAAaAAEAAQAEAAIAAAAbAAEAAQAFAAIAAAAbAAIAAQAEAAIAAAAcAAIAAQAFAAIAAAAbAAMAAQAEAAMAAAAbAAQAAQAEAAIAAAAcAAMAAQAFAAMAAAAcAAQAAQAFAAIAAAAbAAUAAQAEAAMAAAAbAAYAAQAEAAIAAAAcAAUAAQAFAAMAAAAcAAYAAQAFAAIAAAAbAAcAAQAEAAMAAAAbAAgAAQAEAAIAAAAcAAcAAQAFAAMAAAAcAAgAAQAFAAIAAAAbAAkAAQAEAAMAAAAbAAoAAQAEAAIAAAAcAAkAAQAFAAMAAAAcAAoAAQAFAAIAAAAbAAsAAQAEAAMAAAAbAAwAAQAEAAIAAAAcAAsAAQAFAAMAAAAcAAwAAQAFAAIAAAAbAA0AAQAEAAMAAAAbAA4AAQAEAAIAAAAcAA0AAQAFAAMAAAAcAA4AAQAFAAIAAAACAA8AAQAEAAIAAAADAA8AAQAFAAIAAAAEAA8AAQAEAAIAAAAFAA8AAQAFAAIAAAAGAA8AAQAEAAIAAAAHAA8AAQAFAAIAAAAIAA8AAQAEAAIAAAAJAA8AAQAFAAIAAAAKAA8AAQAEAAIAAAALAA8AAQAFAAIAAAAMAA8AAQAEAAIAAAANAA8AAQAFAAIAAAAOAA8AAQAEAAIAAAAPAA8AAQAFAAIAAAAQAA8AAQAEAAIAAAARAA8AAQAFAAIAAAASAA8AAQAEAAIAAAATAA8AAQAFAAIAAAAUAA8AAQAEAAIAAAAVAA8AAQAFAAIAAAAWAA8AAQAEAAIAAAAXAA8AAQAFAAIAAAAYAA8AAQAEAAIAAAAZAA8AAQAFAAIAAAAaAA8AAQAEAAIAAAAbAA8AAQAFAAIAAAAPAAkAAQACAAEAAAA=")
+tile_set = SubResource("TileSet_21oty")
+
+[node name="start_solar" type="Sprite2D" parent="SolarGame"]
+position = Vector2(88, 61)
+scale = Vector2(4, 4)
+texture = ExtResource("3_wgwls")
+hframes = 6
+vframes = 2
+frame = 1
+
+[node name="RightArrow" type="Sprite2D" parent="SolarGame"]
+modulate = Color(0.817521, 0.817521, 0.817521, 1)
+position = Vector2(90, 130)
+rotation = 1.5708
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_7yitv")
+
+[node name="end_solar" type="Sprite2D" parent="SolarGame"]
+position = Vector2(89, 194)
+scale = Vector2(4, 4)
+texture = ExtResource("3_wgwls")
+hframes = 6
+vframes = 2
+frame = 2
+
+[node name="fail_1" type="Sprite2D" parent="SolarGame"]
+self_modulate = Color(0.42, 0.42, 0.42, 1)
+position = Vector2(208, 45)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_meudt")
+
+[node name="fail_2" type="Sprite2D" parent="SolarGame"]
+self_modulate = Color(0.42, 0.42, 0.42, 1)
+position = Vector2(238, 45)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_meudt")
+
+[node name="fail_3" type="Sprite2D" parent="SolarGame"]
+self_modulate = Color(0.42, 0.42, 0.42, 1)
+position = Vector2(268, 45)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_meudt")
+
+[node name="0_key" type="Area2D" parent="SolarGame"]
+position = Vector2(235, 216)
+
+[node name="0" type="Sprite2D" parent="SolarGame/0_key"]
+modulate = Color(0.776691, 0.809397, 0.963882, 1)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("15_1t7v2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SolarGame/0_key"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_5eq4a")
+
+[node name="1_key" type="Area2D" parent="SolarGame"]
+position = Vector2(202, 128)
+
+[node name="1" type="Sprite2D" parent="SolarGame/1_key"]
+modulate = Color(0.776691, 0.809397, 0.963882, 1)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_jpld3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SolarGame/1_key"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_5eq4a")
+
+[node name="2_key" type="Area2D" parent="SolarGame"]
+position = Vector2(235, 128)
+
+[node name="2" type="Sprite2D" parent="SolarGame/2_key"]
+modulate = Color(0.776691, 0.809397, 0.963882, 1)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_t0gal")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SolarGame/2_key"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_5eq4a")
+
+[node name="3_key" type="Area2D" parent="SolarGame"]
+position = Vector2(268, 128)
+
+[node name="3" type="Sprite2D" parent="SolarGame/3_key"]
+modulate = Color(0.776691, 0.809397, 0.963882, 1)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("8_a4try")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SolarGame/3_key"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_5eq4a")
+
+[node name="4_key" type="Area2D" parent="SolarGame"]
+position = Vector2(202, 156)
+
+[node name="4" type="Sprite2D" parent="SolarGame/4_key"]
+modulate = Color(0.776691, 0.809397, 0.963882, 1)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("9_503rr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SolarGame/4_key"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_5eq4a")
+
+[node name="5_key" type="Area2D" parent="SolarGame"]
+position = Vector2(235, 156)
+
+[node name="5" type="Sprite2D" parent="SolarGame/5_key"]
+modulate = Color(0.776691, 0.809397, 0.963882, 1)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("10_ekjin")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SolarGame/5_key"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_5eq4a")
+
+[node name="6_key" type="Area2D" parent="SolarGame"]
+position = Vector2(268, 156)
+
+[node name="6" type="Sprite2D" parent="SolarGame/6_key"]
+modulate = Color(0.776691, 0.809397, 0.963882, 1)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("11_yrh4q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SolarGame/6_key"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_5eq4a")
+
+[node name="7_key" type="Area2D" parent="SolarGame"]
+position = Vector2(202, 184)
+
+[node name="7" type="Sprite2D" parent="SolarGame/7_key"]
+modulate = Color(0.776691, 0.809397, 0.963882, 1)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("12_3tiyt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SolarGame/7_key"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_5eq4a")
+
+[node name="8_key" type="Area2D" parent="SolarGame"]
+position = Vector2(235, 184)
+
+[node name="8" type="Sprite2D" parent="SolarGame/8_key"]
+modulate = Color(0.776691, 0.809397, 0.963882, 1)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("13_hxfnc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SolarGame/8_key"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_5eq4a")
+
+[node name="9_key" type="Area2D" parent="SolarGame"]
+position = Vector2(268, 184)
+
+[node name="9" type="Sprite2D" parent="SolarGame/9_key"]
+modulate = Color(0.776691, 0.809397, 0.963882, 1)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("14_xwasy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SolarGame/9_key"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_5eq4a")
+
+[node name="Area2D" type="Area2D" parent="SolarGame"]
+
+[node name="enter" type="Sprite2D" parent="SolarGame/Area2D"]
+position = Vector2(266, 215)
+rotation = 1.5708
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("16_jis1j")
+
+[node name="clear" type="Sprite2D" parent="SolarGame"]
+position = Vector2(202, 217)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("17_cbn4a")

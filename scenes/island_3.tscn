@@ -74,7 +74,7 @@ script = ExtResource("1_3045b")
 [node name="inventory_gui" parent="." instance=ExtResource("3_xf5jf")]
 
 [node name="FixedCanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.0901961, 0.14902, 0.180392, 0.94902)
+color = Color(0.12, 0.18, 0.21, 0.949)
 
 [node name="base_ground" type="TileMapLayer" parent="."]
 z_index = -5

@@ -7,6 +7,9 @@ extends CanvasLayer
 func _ready():
 	update()
 	
+
+#could save on memory if all preloaded on _ready_ instead of always during process	
+
 func _process(delta: float) -> void:
 	var value = (sin(Global.time - PI / 2) + 1.0) / 2.0
 	$bg.modulate = Color(0.2 + 0.3*(value), 0.2 + 0.3*(value), 0.2 + 0.3*(value), 0.75)
@@ -94,7 +97,49 @@ func update():
 		$end_sprite.texture = preload("res://resources/enginescrap.tres").texture
 		
 		$quest_progress.value = 100 * min(Global.search_inv("res://resources/enginescrap.tres"), 3) / 3.0
+	elif (Global.quest_number == 4):
+		if (Global.stored_quest_num != Global.quest_number):
+			$start_sprite.visible = true
+			$end_sprite.visible = true
+			$npc_icon_sprite.visible = false
+			
+			Global.stored_quest_num = Global.quest_number
+			Global.quest_part = 1
+			
+		if (Global.quest_part == 1 && Global.search_inv("res://resources/solarpanelscrap.tres") >= 2):
+			Global.quest_part = 2
 		
+		if (Global.quest_part == 1):
+			if (Global.portal_26_active == false):
+				$start_sprite.texture = preload("res://resources/purpleportalkey.tres").texture
+			else:
+				$start_sprite.texture = preload("res://resources/emptyfueltank.tres").texture
+			
+			
+			
+			var fullfueltanks = Global.search_inv("res://resources/fullfueltank.tres")
+			var solarpanelscraps = Global.search_inv("res://resources/solarpanelscrap.tres")
+			
+			if (fullfueltanks > 0):
+				$end_sprite.texture = preload("res://resources/solarpanelscrap.tres").texture
+			else:
+				$end_sprite.texture = preload("res://resources/fullfueltank.tres").texture
+			
+			if (solarpanelscraps > 0):
+				$quest_progress.value = 50 + 50 * min(Global.search_inv("res://resources/solarpanelscrap.tres"), 2) / 2.0
+			elif (fullfueltanks > 0):
+				$quest_progress.value = 30 + 20 * min(Global.search_inv("res://resources/fullfueltank.tres"), 4) / 4.0
+			else:
+				$quest_progress.value = 30 * min(Global.search_inv("res://resources/emptyfueltank.tres"), 4) / 4.0
+			
+		elif (Global.quest_part == 2):
+			$start_sprite.texture = preload("res://resources/solarpanelscrap.tres").texture
+			$end_sprite.texture = preload("res://resources/solarpanel.tres").texture
+			var solarpanels = Global.search_inv("res://resources/solarpanel.tres")
+			if (solarpanels > 0):
+				$quest_progress.value = 50 + 50 * min(solarpanels, 2) / 2.0
+			else:
+				$quest_progress.value = 50 * min(Global.search_inv("res://resources/solarpanelbroken.tres"), 2) / 2.0
 	else:
 		$quest_progress.value = 0
 		$start_sprite.visible = false

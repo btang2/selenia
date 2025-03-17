@@ -78,7 +78,7 @@ radius = 80.0
 
 [sub_resource type="Animation" id="Animation_am1sj"]
 resource_name = "idle"
-length = 1.2
+length = 1.5
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -87,7 +87,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.25),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
@@ -171,8 +171,9 @@ texture = ExtResource("8_4lqed")
 position = Vector2(-196, 410)
 move_speed = 25.0
 walk_time = 2.0
-input_resource = "metalscrap"
-input_resource_quantity = 5
+idle_time = 5.0
+input_resource = "fullfueltank"
+input_resource_quantity = 2
 output_resource = "solarpanelscrap"
 output_resource_quantity = 1
 
@@ -180,6 +181,7 @@ output_resource_quantity = 1
 position = Vector2(623, 438)
 move_speed = 25.0
 walk_time = 2.0
+idle_time = 5.0
 input_resource = "solarpanelscrap"
 input_resource_quantity = 1
 output_resource = "solarpanelbroken"

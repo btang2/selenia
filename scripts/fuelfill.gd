@@ -51,6 +51,7 @@ func _process(delta: float) -> void:
 			$chatbox.visible = false
 			$equals_key.visible = false
 			$c_key.visible = true
+			player_chatting = false
 			$Timer.start(0.5)
 		
 		if (Input.is_action_just_pressed("fulfill_quest") && player_in_region && hasItems):

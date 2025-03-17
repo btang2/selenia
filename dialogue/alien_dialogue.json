@@ -3,7 +3,6 @@
 	{"TargetItem": "metalscrap", "quantity": 2},
 	{"TargetItem": "fullfueltank", "quantity": 3},
 	{"TargetItem": "enginescrap", "quantity": 3}, 
-	{"TargetItem": "radiator valve", "quantity": 1},
-	{"TargetItem": "electrical wires", "quantity": 4},
+	{"TargetItem": "solarpanel", "quantity": 2},
 	{"TargetItem": "go fix spaceship", "quantity": -1}
 ]

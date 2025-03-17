@@ -57,6 +57,8 @@ func getSpriteTexture(resource):
 		return preload("res://resources/metalscrap.tres").texture
 	elif (resource == "emptyfueltank"):
 		return preload("res://resources/emptyfueltank.tres").texture
+	elif (resource == "fullfueltank"):
+		return preload("res://resources/fullfueltank.tres").texture
 	elif (resource == "islandfruit"):
 		return preload("res://resources/islandfruit.tres").texture
 	elif (resource == "enginescrap"):

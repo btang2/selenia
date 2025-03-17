@@ -61,6 +61,7 @@ var island6_fruit3_collected = false
 var island6_fruit4_collected = false
 var island6_fruit5_collected = false
 var island6_fruit6_collected = false
+var solarpanel_stage = 0
 
 #.get_bus_index("Master")
 #AudioServer.set_bus_mute(bus_idx, true)
