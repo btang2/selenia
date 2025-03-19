@@ -84,7 +84,7 @@ func _process(delta: float) -> void:
 			else:
 				$q_key.visible = false
 				$chatbox.visible = true
-				$chatbox/speech_bubble/input_sprite.texture = preload("res://resources/emptyfueltank.tres").texture
+				$chatbox/speech_bubble/input_sprite.texture = Global.texture_emptyfueltank
 				$chatbox/speech_bubble/input_text.text = "1x"
 			
 		elif (Input.is_action_just_pressed("enter_minigame") && fuel_minigame_active == true && !on_cooldown):

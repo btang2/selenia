@@ -77,6 +77,8 @@ func check_quest(dialogue_id: int):
 		return Global.search_inv("res://resources/fullfueltank.tres") >= 3
 	elif (dialogue_id == 3):
 		return Global.search_inv("res://resources/enginescrap.tres") >= 3
+	elif (dialogue_id == 4):
+		return Global.search_inv("res://resources/solarpanel.tres") >= 2
 	return false
 
 func fulfill_quest(dialogue_id: int):
@@ -94,7 +96,9 @@ func fulfill_quest(dialogue_id: int):
 	elif (dialogue_id == 3):
 		Global.remove_inv("res://resources/enginescrap.tres", 3)
 		Global.add_inv("res://resources/purpleportalkey.tres", 1) #for last island
-#search_inv, remove_inv, add_inv all global functions now
+	elif (dialogue_id == 4):
+		Global.remove_inv("res://resources/solarpanel.tres", 2)
+		#search_inv, remove_inv, add_inv all global functions now
 
 	
 func _on_chat_detection_body_entered(body: Node2D) -> void:
@@ -103,6 +107,9 @@ func _on_chat_detection_body_entered(body: Node2D) -> void:
 		player = body
 		player_in_chat_zone = true
 		c_key.visible = true
+		#is_chatting = false
+		#$Chatbox.start()
+		#$Chatbox.cancel_dialogue()
 		#print("player entered chat zone")
 
 

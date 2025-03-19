@@ -1,8 +1,16 @@
 extends Node2D
 
+
+var on_zoom_cooldown = false
+var zoom_active = false
+var t = 0.0
+
 func _ready() -> void:
 	#for debug
 	#Global.fuelfill_active = true
+	t = 0.0
+	modulate = Color(0,0,0)
+	
 	if (Global.from_id != ""):
 		$PlayerCat.position = get_node(str("./from_" + Global.from_id)).position
 	#much more todo (mostly islandfruit/enginescrap mechanic)
@@ -29,8 +37,32 @@ func _ready() -> void:
 	#else:
 	#	$magicfruits.visible = false	
 		
-	
 
+func _process(delta: float) -> void:
+	if (t <= 2):
+		modulate = Color(t/2, t/2, t/2)
+		t += delta
+	if (!on_zoom_cooldown):
+		$zoom_key.visible = true
+		$zoom_key.scale = Vector2(0.25 + 0.03*sin(2*60*Global.time), 0.25 + 0.03*sin(2*60*Global.time))
+		
+		if (Input.is_action_just_pressed("zoom")):
+			$Camera2D.zoom = Vector2(0.33, 0.33)
+			zoom_active = true
+			on_zoom_cooldown = true
+			$zoom_cooldown.start(3)
+	else:
+		$zoom_key.visible = false
+	
+func _on_zoom_cooldown_timeout() -> void:
+	if (zoom_active):
+		#reset
+		zoom_active = false
+		$Camera2D.zoom = Vector2(1, 1)
+		$zoom_cooldown.start(3)
+	else:
+		on_zoom_cooldown = false
+		
 
 func _on_npc_island_trader_unique_trade_completed() -> void:
 	Global.island3_npc_traded = true

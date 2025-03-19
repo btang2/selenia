@@ -13,17 +13,19 @@ func _ready():
 func getSpriteTexture():
 	#sadly, hardcoded
 	if (Global.quest_number <= 0):
-		return preload("res://resources/magicfruit.tres").texture
+		return Global.texture_magicfruit
 	elif (Global.quest_number == 1):
-		return preload("res://resources/metalscrap.tres").texture
+		return Global.texture_metalscrap
 	elif (Global.quest_number == 2):
-		return preload("res://resources/fullfueltank.tres").texture #placeholder
+		return Global.texture_fullfueltank #placeholder
 	elif (Global.quest_number == 3):
-		return preload("res://resources/enginescrap.tres").texture
+		return Global.texture_enginescrap
 	elif (Global.quest_number == 4):
-		return preload("res://resources/solarpanel.tres").texture
+		return Global.texture_solarpanel
+	elif (Global.quest_number == 5):
+		return Global.texture_spaceship_icon
 	else:
-		return preload("res://resources/purpleportalkey.tres").texture
+		return Global.texture_purpleportalkey
 func start():
 	if (d_active):
 		return
@@ -32,10 +34,18 @@ func start():
 	dialogue = load_dialogue()
 	#current_dialogue_id = cur_id
 	
-	$NinePatchRect/TargetItem.text = str(dialogue[max(Global.quest_number, 0)]["quantity"]) + "x"
+	if (dialogue[max(Global.quest_number, 0)]["TargetItem"] == "spaceshipicon"):
+		$NinePatchRect/TargetItem.text = ""
+		$NinePatchRect/Sprite2D.texture = getSpriteTexture()
+		$NinePatchRect/Sprite2D.scale = Vector2(0.8, 0.8)
+		$NinePatchRect/Sprite2D.offset.x = -10
+	else:
+		$NinePatchRect/Sprite2D.texture = getSpriteTexture()
+		$NinePatchRect/TargetItem.text = str(dialogue[max(Global.quest_number, 0)]["quantity"]) + "x"
+		
 	#"[center]" + dialogue[max(Global.quest_number, 0)]["TargetItem"] + "[/center]"
 	#can't preload non-constant texture :( so have to hardcode
-	$NinePatchRect/Sprite2D.texture = getSpriteTexture()
+	
 	#next_script()
 
 
@@ -52,9 +62,16 @@ func _input(event):
 		#next_script()
 		emit_signal("quest_completed") #important to keep here for order
 		Global.quest_number += 1
-		$NinePatchRect/TargetItem.text = str(dialogue[max(Global.quest_number, 0)]["quantity"]) + "x"
+		if (dialogue[max(Global.quest_number, 0)]["TargetItem"] == "spaceshipicon"):
+			$NinePatchRect/TargetItem.text = ""
+			$NinePatchRect/Sprite2D.texture = getSpriteTexture()
+			$NinePatchRect/Sprite2D.scale = Vector2(0.8, 0.8)
+			$NinePatchRect/Sprite2D.offset.x = -10
+		else:
+			$NinePatchRect/Sprite2D.texture = getSpriteTexture()
+			$NinePatchRect/TargetItem.text = str(dialogue[max(Global.quest_number, 0)]["quantity"]) + "x"
 		#$NinePatchRect/TargetItem.text = "[center]" + dialogue[max(Global.quest_number,0)]["TargetItem"] + "[/center]"
-		$NinePatchRect/Sprite2D.texture = getSpriteTexture()
+		
 		
 		#d_active = false
 		#$NinePatchRect.visible = false
@@ -66,17 +83,3 @@ func cancel_dialogue():
 	d_active = false 
 	$NinePatchRect.visible = false
 	
-
-#DO NOT USE (bugged)
-func next_script():
-	#TODO: add functionality where it only advances if you have the item (inventory type system?)
-	Global.quest_number += 1
-	
-	if (Global.quest_number >= len(dialogue)):
-		d_active = false
-		$NinePatchRect.visible = false
-		#current_dialogue_id = -1 #this definitely does not have the right design atm
-		emit_signal("dialogue_finished")
-	$NinePatchRect/TargetItem.text = str(dialogue[max(Global.quest_number, 0)]["quantity"]) + "x"
-	#$NinePatchRect/TargetItem.text = "[center]" + dialogue[Global.quest_number]["TargetItem"] + "[/center]"
-	$NinePatchRect/Sprite2D.texture = getSpriteTexture()

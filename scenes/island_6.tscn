@@ -7,13 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://ca3i6mi0omyy4" path="res://art/tilesets/selenia_ground.png" id="4_a3wm2"]
 [ext_resource type="PackedScene" uid="uid://cn7tikxa3bwrt" path="res://characters/player_cat.tscn" id="5_i5l0o"]
 [ext_resource type="PackedScene" uid="uid://oynayhy2qfbs" path="res://scenes/portal.tscn" id="6_udbn2"]
-[ext_resource type="Texture2D" uid="uid://bq15a8wu6vi5e" path="res://art/misc personal assets/signs/sign-2.png" id="8_4lqed"]
+[ext_resource type="Texture2D" uid="uid://bq15a8wu6vi5e" path="res://art/personal/signs/sign-2.png" id="8_4lqed"]
 [ext_resource type="PackedScene" uid="uid://cg0b7sdi80pfr" path="res://characters/npc_trader.tscn" id="8_pxseg"]
 [ext_resource type="PackedScene" uid="uid://dxq6k4ycibduq" path="res://objects/islandfruit.tscn" id="9_a0pqb"]
 [ext_resource type="Script" path="res://scripts/fixsolarpanel.gd" id="10_3xsi2"]
 [ext_resource type="Texture2D" uid="uid://75jf3jf8y5jo" path="res://art/character assets/TerinIdle-Sheet.png" id="11_i36l6"]
 [ext_resource type="Texture2D" uid="uid://b3x2113801wis" path="res://art/keybord and controller icons/individual sprites/keyboard/C button.png" id="12_x6s8w"]
-[ext_resource type="Texture2D" uid="uid://dlduc5l4cuawj" path="res://art/misc personal assets/text_bubble.png" id="13_qbt0d"]
+[ext_resource type="Texture2D" uid="uid://dlduc5l4cuawj" path="res://art/personal/text_bubble.png" id="13_qbt0d"]
 [ext_resource type="Texture2D" uid="uid://blnt028txtvem" path="res://art/item art/fruits.png" id="14_8lpx5"]
 [ext_resource type="Texture2D" uid="uid://cha0e8mdeni4a" path="res://art/keybord and controller icons/individual sprites/keyboard/= equal.png" id="15_t01gh"]
 [ext_resource type="Texture2D" uid="uid://bwa08wlmd8xos" path="res://art/keybord and controller icons/individual sprites/keyboard/Q.png" id="16_7vcm6"]
@@ -76,6 +76,21 @@ sources/1 = SubResource("TileSetAtlasSource_ax22f")
 [sub_resource type="CircleShape2D" id="CircleShape2D_uq12v"]
 radius = 80.0
 
+[sub_resource type="Animation" id="Animation_ohj34"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_am1sj"]
 resource_name = "idle"
 length = 1.5
@@ -91,21 +106,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
-}
-
-[sub_resource type="Animation" id="Animation_ohj34"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x1hs7"]
@@ -131,7 +131,7 @@ region = Rect2(32, 64, 16, 16)
 [node name="island_6" type="Node2D"]
 script = ExtResource("1_80tb4")
 
-[node name="quest_progress_bar" parent="." instance=ExtResource("2_j1eg4")]
+[node name="quest_progress" parent="." instance=ExtResource("2_j1eg4")]
 
 [node name="inventory_gui" parent="." instance=ExtResource("3_squia")]
 

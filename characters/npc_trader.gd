@@ -52,26 +52,26 @@ func _ready():
 func getSpriteTexture(resource):
 	print("getting texture " + resource)
 	if (resource == "metalore"):
-		return preload("res://resources/metalore.tres").texture
+		return Global.texture_metalore
 	elif (resource == "metalscrap"):
-		return preload("res://resources/metalscrap.tres").texture
+		return Global.texture_metalscrap
 	elif (resource == "emptyfueltank"):
-		return preload("res://resources/emptyfueltank.tres").texture
+		return Global.texture_emptyfueltank
 	elif (resource == "fullfueltank"):
-		return preload("res://resources/fullfueltank.tres").texture
+		return Global.texture_fullfueltank
 	elif (resource == "islandfruit"):
-		return preload("res://resources/islandfruit.tres").texture
+		return Global.texture_islandfruit
 	elif (resource == "enginescrap"):
-		return preload("res://resources/enginescrap.tres").texture
+		return Global.texture_enginescrap
 	elif (resource == "blueportalkey"):
-		return preload("res://resources/blueportalkey.tres").texture
+		return Global.texture_blueportalkey
 	elif (resource == "solarpanelbroken"):
-		return preload("res://resources/solarpanelbroken.tres").texture
+		return Global.texture_solarpanelbroken
 	elif (resource == "solarpanelscrap"):
-		return preload("res://resources/solarpanelscrap.tres").texture
+		return Global.texture_solarpanelscrap
 	else:
 		#harcode as needed
-		return preload("res://resources/purpleportalkey.tres").texture
+		return Global.texture_purpleportalkey
 
 
 func _physics_process(_delta):

@@ -4,5 +4,5 @@
 	{"TargetItem": "fullfueltank", "quantity": 3},
 	{"TargetItem": "enginescrap", "quantity": 3}, 
 	{"TargetItem": "solarpanel", "quantity": 2},
-	{"TargetItem": "go fix spaceship", "quantity": -1}
+	{"TargetItem": "spaceshipicon", "quantity": -1}
 ]

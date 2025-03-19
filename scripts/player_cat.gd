@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var move_speed : float = 120 #120, is 300 for debugging purposes
+@export var move_speed : float = 150 #150, is 300 for debugging purposes
 @export var starting_direction : Vector2 = Vector2(0, 1)
 @export var can_move = true
 
@@ -30,7 +30,10 @@ func _physics_process(_delta):
 	
 	
 	#update velocity
-	velocity = input_direction * move_speed
+	if (abs(input_direction[0]) + abs(input_direction[1]) == 2):
+		velocity = input_direction * move_speed * 0.717 
+	else:
+		velocity = input_direction * move_speed
 	update_animation_parameters(input_direction)
 	
 	#move and slide function to move characteron map

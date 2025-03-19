@@ -2,7 +2,37 @@ extends Node
 
 #not sure if needed atm, maybe for player stats would be useful, or if we wanted single player
 
+#preloaded textures (check these if dependencies change)
+
+var texture_sign_s = preload("res://art/personal/signs/sign-s.png") 
+var texture_sign_1 = preload("res://art/personal/signs/sign-1.png") 
+var texture_sign_2 = preload("res://art/personal/signs/sign-2.png") 
+var texture_sign_3 = preload("res://art/personal/signs/sign-3.png") 
+var texture_sign_4 = preload("res://art/personal/signs/sign-4.png") 
+var texture_sign_5 = preload("res://art/personal/signs/sign-5.png") 
+var texture_sign_6 = preload("res://art/personal/signs/sign-6.png") 
+
+
+var texture_magicfruit = preload("res://resources/magicfruit.tres").texture
+var texture_metalore = preload("res://resources/metalore.tres").texture
+var texture_metalscrap = preload("res://resources/metalscrap.tres").texture
+var texture_emptyfueltank = preload("res://resources/emptyfueltank.tres").texture
+var texture_fullfueltank = preload("res://resources/fullfueltank.tres").texture
+
+var texture_islandfruit = preload("res://resources/islandfruit.tres").texture
+var texture_enginescrap = preload("res://resources/enginescrap.tres").texture
+var texture_solarpanel = preload("res://resources/solarpanel.tres").texture
+var texture_solarpanelbroken = preload("res://resources/solarpanelbroken.tres").texture
+var texture_solarpanelscrap =preload("res://resources/solarpanelscrap.tres").texture
+
+var texture_spaceship_icon = preload("res://resources/spaceshipicon.tres").texture
+
+var texture_blueportalkey = preload("res://resources/blueportalkey.tres").texture
+var texture_redportalkey = preload("res://resources/redportalkey.tres").texture
+var texture_purpleportalkey = preload("res://resources/purpleportalkey.tres").texture
+
 var from_id = "" #default, change if not from somewhere, use when instantiating maps
+var cur_island = "spawn_island"
 
 #both should be initialized upon spawn
 var player_inv = ["", "", "", "", "", "", "", ""] #global record of player inventory
@@ -61,8 +91,11 @@ var island6_fruit3_collected = false
 var island6_fruit4_collected = false
 var island6_fruit5_collected = false
 var island6_fruit6_collected = false
+
+var solar_game_active = false
 var solarpanel_stage = 0
 
+var spaceship_stage = 0
 #.get_bus_index("Master")
 #AudioServer.set_bus_mute(bus_idx, true)
 var developer_mode = false #true == on (easy mode)

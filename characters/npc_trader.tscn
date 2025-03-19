@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://characters/npc_trader.gd" id="1_dswqf"]
 [ext_resource type="Texture2D" uid="uid://bqpla7ora6ong" path="res://art/character assets/mushroom_combined.png" id="2_k2jyq"]
-[ext_resource type="Texture2D" uid="uid://dlduc5l4cuawj" path="res://art/misc personal assets/text_bubble.png" id="3_b4ys2"]
+[ext_resource type="Texture2D" uid="uid://dlduc5l4cuawj" path="res://art/personal/text_bubble.png" id="3_b4ys2"]
 [ext_resource type="Texture2D" uid="uid://b3x2113801wis" path="res://art/keybord and controller icons/individual sprites/keyboard/C button.png" id="4_jr3ip"]
 [ext_resource type="Texture2D" uid="uid://b6e0psoavltdk" path="res://art/items.png" id="4_w5igx"]
 [ext_resource type="Texture2D" uid="uid://cha0e8mdeni4a" path="res://art/keybord and controller icons/individual sprites/keyboard/= equal.png" id="5_dw85i"]

@@ -303,7 +303,7 @@ collision_mask = 2
 script = ExtResource("1_kar0f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-self_modulate = Color(0.762404, 0.762404, 0.762404, 1)
+self_modulate = Color(0.834614, 0.834614, 0.834614, 1)
 texture = ExtResource("2_5tamn")
 hframes = 4
 vframes = 4

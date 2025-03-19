@@ -1,10 +1,14 @@
 extends Node2D
 
+var t = 0.0
 func _ready() -> void:
 	#for debug
 	#Global.fuelfill_active = true
 	#much more todo (mostly islandfruit/enginescrap mechanic)
 	#the .gd script will look ideally same as before
+	t = 0.0
+	modulate = Color(0,0,0)
+	
 	if (Global.from_id != ""):
 		$PlayerCat.position = get_node(str("./from_" + Global.from_id)).position
 	
@@ -20,12 +24,20 @@ func _ready() -> void:
 		$islandfruit5.visible = false
 	if (Global.island6_fruit6_collected):
 		$islandfruit6.visible = false
-
+		
+func _process(delta: float) -> void:
+	if (t <= 2):
+		modulate = Color(t/2, t/2, t/2)
+		t += delta
+		
 func _on_fixsolarpanel_minigame_activated() -> void:
 	$PlayerCat.can_move = false
 	$PlayerCat/PointLight2D.visible = false
 	$inventory_gui.visible = false
 	$quest_progress.visible = false
+	
+	
+	Global.solarpanel_stage = 0
 
 func _on_fixsolarpanel_minigame_stopped() -> void:
 	$PlayerCat.can_move = true

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ddwh64sobwtg8"]
 
-[ext_resource type="Texture2D" uid="uid://dlduc5l4cuawj" path="res://art/misc personal assets/text_bubble.png" id="1_04kq7"]
+[ext_resource type="Texture2D" uid="uid://dlduc5l4cuawj" path="res://art/personal/text_bubble.png" id="1_04kq7"]
 [ext_resource type="Script" path="res://scripts/chatbox.gd" id="1_dlbxi"]
 
 [node name="Chatbox" type="Control"]

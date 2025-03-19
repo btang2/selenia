@@ -7,17 +7,17 @@
 [ext_resource type="PackedScene" uid="uid://cg0b7sdi80pfr" path="res://characters/npc_trader.tscn" id="5_nph7q"]
 [ext_resource type="PackedScene" uid="uid://cn7tikxa3bwrt" path="res://characters/player_cat.tscn" id="5_xlq8o"]
 [ext_resource type="PackedScene" uid="uid://oynayhy2qfbs" path="res://scenes/portal.tscn" id="6_6yhdf"]
-[ext_resource type="Texture2D" uid="uid://cf7gyvtq6p5f" path="res://art/misc personal assets/signs/sign-3.png" id="7_fakxp"]
-[ext_resource type="Texture2D" uid="uid://cqk8jpgwt0gq4" path="res://art/misc personal assets/signs/sign-4.png" id="8_gllsl"]
-[ext_resource type="Texture2D" uid="uid://tgduywlf2pgv" path="res://art/misc personal assets/signs/sign-6.png" id="9_0krks"]
-[ext_resource type="Texture2D" uid="uid://bidsdpvwxvm5s" path="res://art/misc personal assets/signs/sign-1.png" id="10_nq7eh"]
+[ext_resource type="Texture2D" uid="uid://cf7gyvtq6p5f" path="res://art/personal/signs/sign-3.png" id="7_fakxp"]
+[ext_resource type="Texture2D" uid="uid://cqk8jpgwt0gq4" path="res://art/personal/signs/sign-4.png" id="8_gllsl"]
+[ext_resource type="Texture2D" uid="uid://tgduywlf2pgv" path="res://art/personal/signs/sign-6.png" id="9_0krks"]
+[ext_resource type="Texture2D" uid="uid://bidsdpvwxvm5s" path="res://art/personal/signs/sign-1.png" id="10_nq7eh"]
 [ext_resource type="Texture2D" uid="uid://ca3i6mi0omyy4" path="res://art/tilesets/selenia_ground.png" id="11_uh42a"]
 [ext_resource type="PackedScene" uid="uid://1tvis1kmyifw" path="res://objects/magicfruit.tscn" id="13_8tkng"]
 [ext_resource type="Script" path="res://scripts/fuelfill.gd" id="14_4dou0"]
 [ext_resource type="Texture2D" uid="uid://6gqtwcgbetwi" path="res://art/character assets/TerinTransIdle-Sheet.png" id="14_th67t"]
 [ext_resource type="Texture2D" uid="uid://bwa08wlmd8xos" path="res://art/keybord and controller icons/individual sprites/keyboard/Q.png" id="15_joerg"]
 [ext_resource type="Texture2D" uid="uid://b3x2113801wis" path="res://art/keybord and controller icons/individual sprites/keyboard/C button.png" id="16_on5rl"]
-[ext_resource type="Texture2D" uid="uid://dlduc5l4cuawj" path="res://art/misc personal assets/text_bubble.png" id="17_df087"]
+[ext_resource type="Texture2D" uid="uid://dlduc5l4cuawj" path="res://art/personal/text_bubble.png" id="17_df087"]
 [ext_resource type="Texture2D" uid="uid://blnt028txtvem" path="res://art/item art/fruits.png" id="18_e4bfb"]
 [ext_resource type="Texture2D" uid="uid://cha0e8mdeni4a" path="res://art/keybord and controller icons/individual sprites/keyboard/= equal.png" id="19_1texw"]
 
@@ -79,6 +79,21 @@ sources/1 = SubResource("TileSetAtlasSource_x6qnl")
 [sub_resource type="CircleShape2D" id="CircleShape2D_31woq"]
 radius = 80.0
 
+[sub_resource type="Animation" id="Animation_0ussg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_8isk6"]
 resource_name = "fuelfill_idle"
 loop_mode = 1
@@ -93,21 +108,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_0ussg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_02qif"]
@@ -196,6 +196,7 @@ texture = ExtResource("7_fakxp")
 position = Vector2(732, 169)
 to = "island_4"
 from = "island_2"
+color = "red"
 
 [node name="from_island_4" type="Marker2D" parent="."]
 position = Vector2(732, 212)

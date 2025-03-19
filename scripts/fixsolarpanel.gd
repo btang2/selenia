@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 		$fixsolarpanel_light.energy = ((cos(Global.time) + 1.0) / 2.0) * 0.2
 		$waiting_time.visible = false
 	
-	if (!Global.fuelfill_active):
+	if (!Global.solar_game_active):
 		if (Input.is_action_just_pressed("chat") && player_in_region && !player_chatting):
 			#Open chat
 			player_chatting = true
@@ -59,7 +59,7 @@ func _process(delta: float) -> void:
 		
 		if (Input.is_action_just_pressed("fulfill_quest") && player_in_region && hasItems):
 			Global.remove_inv("res://resources/islandfruit.tres", 6)
-			Global.fuelfill_active = true
+			Global.solar_game_active = true
 			
 			$chatbox.visible = false
 			$equals_key.visible = false
@@ -87,13 +87,13 @@ func _process(delta: float) -> void:
 			else:
 				$q_key.visible = false
 				$chatbox.visible = true
-				$chatbox/speech_bubble/input_sprite.texture = preload("res://resources/solarpanelbroken.tres").texture
+				$chatbox/speech_bubble/input_sprite.texture = Global.texture_solarpanelbroken
 				$chatbox/speech_bubble/input_text.text = "1x"
 			
 		elif (Input.is_action_just_pressed("enter_minigame") && solarpanel_minigame_active == true && !on_cooldown):
 			emit_signal("minigame_stopped")
 			solarpanel_minigame_active = false
-			if (Global.solarpanel_stage == 4):
+			if (Global.solarpanel_stage >= 9):
 				if (Global.search_inv("res://resources/solarpanelbroken.tres") > 0):
 					Global.remove_inv("res://resources/solarpanelbroken.tres", 1)
 					Global.add_inv("res://resources/solarpanel.tres", 1)
@@ -115,7 +115,7 @@ func _process(delta: float) -> void:
 func _on_game_over():
 	emit_signal("minigame_stopped")
 	solarpanel_minigame_active = false
-	if (Global.solarpanel_stage == 4):
+	if (Global.solarpanel_stage >= 9):
 		if (Global.search_inv("res://resources/solarpanelbroken.tres") > 0):
 			Global.remove_inv("res://resources/solarpanelbroken.tres", 1)
 			Global.add_inv("res://resources/solarpanel.tres", 1)
@@ -129,7 +129,7 @@ func _on_game_over():
 func _on_body_entered(body: Node2D) -> void:
 	if (body.name == "PlayerCat"):
 		player_in_region = true 
-		if (Global.fuelfill_active):
+		if (Global.solar_game_active):
 			$q_key.visible = true
 		else:
 			$c_key.visible = true
@@ -146,7 +146,7 @@ func _on_body_exited(body: Node2D) -> void:
 
 
 func _on_timer_timeout() -> void:
-	if (Global.fuelfill_active):
+	if (Global.solar_game_active):
 		on_cooldown = false
 		$waiting_time.visible = false
 		if (player_in_region):

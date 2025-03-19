@@ -5,9 +5,24 @@ extends CanvasLayer
 @export var gradient: GradientTexture1D
 
 func _ready():
+	$cur_island_sprite.texture = load_sign(Global.cur_island)
 	update()
-	
 
+func load_sign(str):
+	if (str == "spawn_island"):
+		return Global.texture_sign_s #.texture
+	elif (str == "island_1"):
+		return Global.texture_sign_1 #.texture
+	elif (str == "island_2"):
+		return Global.texture_sign_2 #.texture
+	elif (str == "island_3"):
+		return Global.texture_sign_3 #.texture
+	elif (str == "island_4"):
+		return Global.texture_sign_4 #.texture
+	elif (str == "island_5"):
+		return Global.texture_sign_5 #.texture
+	elif (str == "island_6"):
+		return Global.texture_sign_6 #.texture
 #could save on memory if all preloaded on _ready_ instead of always during process	
 
 func _process(delta: float) -> void:
@@ -28,49 +43,48 @@ func update():
 		if (Global.stored_quest_num != Global.quest_number):
 			$start_sprite.visible = false
 			$end_sprite.visible = true
-			$npc_icon_sprite.visible = false
-			$end_sprite.texture = preload("res://resources/magicfruit.tres").texture
-			
+			$end_sprite.texture = Global.texture_magicfruit
+			$goal_island_sprite.texture = load_sign("spawn_island")
 			Global.stored_quest_num = Global.quest_number
 			Global.quest_part = 1
-			
 		$quest_progress.value = 100*min(Global.search_inv("res://resources/magicfruit.tres"), 3) / 3.0
 	elif (Global.quest_number == 1):	
 		if (Global.stored_quest_num != Global.quest_number):
 			$start_sprite.visible = true
 			$end_sprite.visible = true
-			$npc_icon_sprite.visible = false
-			
+			$goal_island_sprite.texture = load_sign("island_1")
 			Global.stored_quest_num = Global.quest_number
 			Global.quest_part = 1
-		
+			
+		$goal_island_sprite.texture = load_sign("island_1")
 		#transition
 		if (Global.quest_part == 1 && 6 * Global.search_inv("res://resources/metalscrap.tres") + Global.search_inv("res://resources/metalore.tres") >= 12):
 			#cooldown of sorts
 			Global.quest_part = 2
 	
 		if (Global.quest_part == 1):
-			$start_sprite.texture = preload("res://resources/blueportalkey.tres").texture
-			$end_sprite.texture = preload("res://resources/metalore.tres").texture
+			$start_sprite.texture = Global.texture_blueportalkey
+			$end_sprite.texture = Global.texture_metalore
 			$quest_progress.value = 100*min(6 * Global.search_inv("res://resources/metalscrap.tres") + Global.search_inv("res://resources/metalore.tres"), 12) / 12.0
 		elif (Global.quest_part == 2):
-			$start_sprite.texture = preload("res://resources/metalore.tres").texture
-			$end_sprite.texture = preload("res://resources/metalscrap.tres").texture
+			$start_sprite.texture = Global.texture_metalore
+			$end_sprite.texture = Global.texture_metalscrap
 			$quest_progress.value = 100*min(Global.search_inv("res://resources/metalscrap.tres"), 2) / 2.0
+	
 	elif (Global.quest_number == 2):
 		if (Global.stored_quest_num != Global.quest_number):
 			$start_sprite.visible = true
 			$end_sprite.visible = true
-			$npc_icon_sprite.visible = false
-			
 			Global.stored_quest_num = Global.quest_number
 			Global.quest_part = 1
 		#less guidance, as further on in game
 		if (Global.portal_12_active == false):
-			$start_sprite.texture = preload("res://resources/redportalkey.tres").texture
+			$start_sprite.texture = Global.texture_redportalkey
 		else:
-			$start_sprite.texture = preload("res://resources/metalore.tres").texture
-		$end_sprite.texture = preload("res://resources/fullfueltank.tres").texture
+			$start_sprite.texture = Global.texture_metalore
+		$end_sprite.texture = Global.texture_fullfueltank
+		
+		$goal_island_sprite.texture = load_sign("island_2")
 		
 		var fulltanks = Global.search_inv("res://resources/fullfueltank.tres")
 		var emptytanks = Global.search_inv("res://resources/emptyfueltank.tres")
@@ -86,22 +100,29 @@ func update():
 		if (Global.stored_quest_num != Global.quest_number):
 			$start_sprite.visible = true
 			$end_sprite.visible = true
-			$npc_icon_sprite.visible = false
 			
 			Global.stored_quest_num = Global.quest_number
 			Global.quest_part = 1
-		if (Global.portal_23_active == false && Global.portal_24_active == false):
-			$start_sprite.texture = preload("res://resources/blueportalkey.tres").texture
+		if (Global.portal_23_active == false):
+			$start_sprite.texture = Global.texture_blueportalkey
 		else:
-			$start_sprite.texture = preload("res://resources/islandfruit.tres").texture
-		$end_sprite.texture = preload("res://resources/enginescrap.tres").texture
+			$start_sprite.texture = Global.texture_islandfruit
+		$end_sprite.texture = Global.texture_enginescrap
 		
-		$quest_progress.value = 100 * min(Global.search_inv("res://resources/enginescrap.tres"), 3) / 3.0
+		var scraps = min(Global.search_inv("res://resources/enginescrap.tres"), 3)
+		
+		if (scraps < 1):
+			$goal_island_sprite.texture = load_sign("island_3")
+		elif (scraps < 2):
+			$goal_island_sprite.texture = load_sign("island_4")
+		else:
+			$goal_island_sprite.texture = load_sign("island_5")
+		
+		$quest_progress.value = 100 * min(scraps, 3) / 3.0
 	elif (Global.quest_number == 4):
 		if (Global.stored_quest_num != Global.quest_number):
 			$start_sprite.visible = true
 			$end_sprite.visible = true
-			$npc_icon_sprite.visible = false
 			
 			Global.stored_quest_num = Global.quest_number
 			Global.quest_part = 1
@@ -111,19 +132,19 @@ func update():
 		
 		if (Global.quest_part == 1):
 			if (Global.portal_26_active == false):
-				$start_sprite.texture = preload("res://resources/purpleportalkey.tres").texture
+				$start_sprite.texture = Global.texture_purpleportalkey
 			else:
-				$start_sprite.texture = preload("res://resources/emptyfueltank.tres").texture
+				$start_sprite.texture = Global.texture_emptyfueltank
 			
-			
+			$goal_island_sprite.texture = load_sign("island_2")
 			
 			var fullfueltanks = Global.search_inv("res://resources/fullfueltank.tres")
 			var solarpanelscraps = Global.search_inv("res://resources/solarpanelscrap.tres")
 			
 			if (fullfueltanks > 0):
-				$end_sprite.texture = preload("res://resources/solarpanelscrap.tres").texture
+				$end_sprite.texture = Global.texture_solarpanelscrap
 			else:
-				$end_sprite.texture = preload("res://resources/fullfueltank.tres").texture
+				$end_sprite.texture = Global.texture_fullfueltank
 			
 			if (solarpanelscraps > 0):
 				$quest_progress.value = 50 + 50 * min(Global.search_inv("res://resources/solarpanelscrap.tres"), 2) / 2.0
@@ -133,13 +154,18 @@ func update():
 				$quest_progress.value = 30 * min(Global.search_inv("res://resources/emptyfueltank.tres"), 4) / 4.0
 			
 		elif (Global.quest_part == 2):
-			$start_sprite.texture = preload("res://resources/solarpanelscrap.tres").texture
-			$end_sprite.texture = preload("res://resources/solarpanel.tres").texture
+			$start_sprite.texture = Global.texture_solarpanelscrap
+			$end_sprite.texture = Global.texture_solarpanel
+			$goal_island_sprite.texture = load_sign("island_6")
 			var solarpanels = Global.search_inv("res://resources/solarpanel.tres")
 			if (solarpanels > 0):
 				$quest_progress.value = 50 + 50 * min(solarpanels, 2) / 2.0
 			else:
 				$quest_progress.value = 50 * min(Global.search_inv("res://resources/solarpanelbroken.tres"), 2) / 2.0
+	elif (Global.quest_part == 5):
+		$start_sprite.visible = false
+		$end_sprite.texture = Global.texture_spaceship_icon
+		$goal_island_sprite.texture = load_sign("spawn_island")
 	else:
 		$quest_progress.value = 0
 		$start_sprite.visible = false
